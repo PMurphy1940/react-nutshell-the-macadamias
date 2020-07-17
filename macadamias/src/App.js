@@ -11,6 +11,7 @@ import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 
 
 function App() {
+  const [loggedIn, setLogin] = useState(false)
   return (
     <div className="App">
         <div className="App-header">
@@ -36,6 +37,8 @@ function App() {
         <footer><div className="div__footer">
             <Footer />
           </div></footer>
+   {loggedIn ? <NavBar/> :
+     <Login setLogin={setLogin}/>}
     </div>
   );
 }
