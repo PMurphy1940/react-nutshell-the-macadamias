@@ -56,7 +56,7 @@ html, body, #app, #app>div {
 }
 
 .div__navbar {
-  flex: 0 0 20em;
+  flex: 0 0 12em;
   border: 1px solid palevioletred;
 }
 
@@ -69,10 +69,6 @@ html, body, #app, #app>div {
   min-height: 80px;
 }
 
-Card {
-  border: 
-}
-
 @media (min-width: 768px) {
   .div__main {
     flex-direction: row;
@@ -82,7 +78,6 @@ Card {
     flex: 1;
   }
   .div__navbar {
-    /* 12em is the width of the columns */
     flex: 0 0 20em;
   }
 }
