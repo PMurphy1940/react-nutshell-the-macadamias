@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 const Login = (props) =>{
     const [form, setForm] = useState({
         username: "",
-        password:""
+        password:"",
+        activeUserId: 1
     })
     const handleChange = (e) =>{
         let target = e.target;

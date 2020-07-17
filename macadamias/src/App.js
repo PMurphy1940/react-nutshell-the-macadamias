@@ -4,13 +4,18 @@ import NavBar from './components/navbar/NavBar';
 import { useState } from "react";
 
 function App() {
-  const [loggedIn, setLogin] = useState(false)
+  const [loggedIn, setLogin] = useState(true)
   return (
     <div className="App">
    {loggedIn ? <NavBar/> :
      <Login setLogin={setLogin}/>}
     </div>
   );
+
+
+
+
+
 }
 
 export default App;
