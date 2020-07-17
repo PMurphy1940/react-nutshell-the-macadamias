@@ -52,17 +52,22 @@ html, body, #app, #app>div {
 
 .div__main {
   display: flex;
+  flex-flow: row;
   flex: 1;
+  
 }
 
 .div__navbar {
-  flex: 0 0 12em;
+  /* flex: 0 0 12em; */
   border: 1px solid palevioletred;
+  width: 30%;
 }
 
 .div__appviews {
-  flex: 1;
+  display: flex;
+  flex: 2;
   border: 1px solid firebrick;
+  /* width: auto; */
 }
 
 .div__footer {
@@ -75,9 +80,13 @@ html, body, #app, #app>div {
     flex: 1;
   }
   .div__appviews {
-    flex: 1;
+    flex: 2;
+    /* width:auto ; */
   }
+
   .div__navbar {
-    flex: 0 0 20em;
+    width: 30%;
+    /* flex: 0 0 20em; */
   }
+
 }
