@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./navbar.css";
-
+import Authentication from "../Auth/Authentication"
 
 const NavBar = () => {
     const [open, setOpen] = useState(false);
@@ -28,4 +28,4 @@ const NavBar = () => {
         </>
     )
 }
-export default NavBar;
+export default Authentication(NavBar);
