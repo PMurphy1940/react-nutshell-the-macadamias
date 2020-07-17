@@ -2,7 +2,7 @@ import {Route, Redirect} from 'react-router-dom';
 import React from 'react';
 import Login from "../Login/Login";
 import NavBar from "../navbar/NavBar";
-import EventList from '../../components/events/EventTest';
+import EventList from '../../components/events/EventList';
 
 
 
