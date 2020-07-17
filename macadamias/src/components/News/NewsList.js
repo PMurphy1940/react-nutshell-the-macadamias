@@ -1,27 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import { getUserNews, getUserFriendsNews } from "./NewsAPIManager"
+import NewsAPIManager from "./NewsAPIManager"
+import NewsItemDisplay from "./NewsItemDisplay"
 
 
 const NewsFeed = (props) => {
     //Initial news state is empty//
 const [news, setNews] = useState([])
+const [friends, setFriends] = useState([])
 
-const userNews = () => {
-    return getUserNews(sessionStorage.activeUserId)
+const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
+
+const userFriends = () => {
+    return NewsAPIManager.getUserFriends(2)
+    .then(result => {
+        setFriends(result)
+
+    })
+}
+
+const getUserAndFriendsNews = () => {
+    return NewsAPIManager.getUserNews(2)
     .then(newsFromAPI => {
         setNews(newsFromAPI)
     })
 }
+const newsSearchString = () => {
+    friends.forEach(friend => {
+        
+    })
+}
 
 useEffect(() => {
-    userNews();
+    userFriends();
 }, [])
-console.log("User News", userNews)
+console.log(activeUser)
+console.log("User Friends", friends)
 
 
 return(
     <>
-    {userNews.map(newsItem => <NewsItemDisplay key={newsItem.id} newsItem={newsItem} />)}
+   {(news.news !== undefined) && 
+   <>
+    {news.news.map(newsItem =>
+            <NewsItemDisplay
+            key={newsItem.id}
+            newsItem={newsItem}          
+            {...props} />)}
+    </>
+   }
     </>
 )
 

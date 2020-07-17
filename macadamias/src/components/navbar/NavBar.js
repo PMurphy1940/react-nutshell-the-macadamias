@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from "react-router-dom"
 import "./navbar.css";
-
+import Authentication from "../Auth/Authentication"
 
 const NavBar = () => {
     // const [open, setOpen] = useState(false);
@@ -29,4 +29,4 @@ const NavBar = () => {
         </>
     )
 }
-export default withRouter(NavBar);
+export default Authentication(NavBar);

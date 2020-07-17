@@ -1,10 +1,14 @@
 const remoteURL = 'http://localhost:5002'
 
 export default {
-    getUserNews (id)  {
-        return fetch(`${remoteURL}/users/${id}?_embed=news`)
+    
+
+    getUserFriends(id)  {
+        return fetch(`${remoteURL}/friends?activeUserId=${id}&_expand=user`)
+        .then(response => response.json())
     },
-    getUserFriendsNews (friendsIds) {
-        return fetch(`${remoteURL}/news?${friendsIds}`)
+    getUserAndFriendsNews(searchList) {
+        return fetch(`${remoteURL}/news?${searchList}&_expand=user`)
+        .then(response => response.json())
     }
 }
