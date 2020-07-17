@@ -1,0 +1,56 @@
+/* Header Section */
+.container__footer {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+  text-align: center;
+  background-size:cover;
+  height:5vw;
+  padding: 0 .3em;
+  min-height:100px;
+  max-height:150px;
+  min-width:300px;
+  color:rgb(241, 241, 226);
+  /* background-image:url("../../images/cloudsheader.jpg"); */
+  background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);  min-height: 10vh;
+  background-color: midnightblue;
+  background-size: cover;
+  
+  }
+    
+
+
+      
+      .body__footer {
+        display: flex;
+        flex-flow: row;
+          height: auto;
+          width: auto;
+          justify-content: center;
+          font-size: small;
+          color: #f3f3f3;
+      }
+      .footer__text {
+          flex: 1 0 100%;
+          height: auto;
+          width: auto;
+          justify-content: center;
+          text-align: center;
+      }
+    
+      .paragraph__footer__copyright {
+          margin: 0;
+          font-size: .8em;
+          justify-items: center;
+      }
+    
+      
+      .button__footer__logout {
+          display: flex;
+          justify-self: flex-start;
+          width: fit-content;
+          margin: 0 auto 0 auto;
+          font-size: .8vw;
+      }
