@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 
-const Login = () =>{
+
+
+const Login = (props) =>{
     const [form, setForm] = useState({
         username: "",
-        password:""
+        password:"", 
+        activeUserId:1
     })
     const handleChange = (e) =>{
         let target = e.target;
@@ -12,7 +15,7 @@ const Login = () =>{
     }
     const onSubmit = () =>{
         sessionStorage.setItem('credentials', JSON.stringify(form))
-        console.log(JSON.parse(sessionStorage.credentials));
+        props.history.push('/navbar');
     }
     //Registration by default
     //If username is in system, collapse the second password field and make 
@@ -21,7 +24,7 @@ const Login = () =>{
 
     return (
         <>
-        <form>
+        <form className="col-md-4 col-md-offset-4 center">
   <div className="form-group">
     <label htmlFor="inputEmail">Email</label>
     <input
