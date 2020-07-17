@@ -1,0 +1,13 @@
+.card-img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.imgButton__container {
+  display: grid;
+}
+
+.card-title {
+  word-spacing: 20px;
+}
+
