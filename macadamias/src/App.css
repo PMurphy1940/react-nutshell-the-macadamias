@@ -1,4 +1,13 @@
+
+
+html, body, #app, #app>div {
+  height: 100%
+}
+
 .App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; 
   text-align: center;
 }
 
@@ -14,15 +23,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);  min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  /* background:#3e7ff8 url("./images/cloudsheader.jpg"); */
+  background-color: midnightblue;
+  background-size: cover;
 }
+
+
 
 .App-link {
   color: #61dafb;
@@ -35,4 +48,45 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.div__main {
+  display: flex;
+  flex-flow: row;
+  flex: 1;
+  
+}
+
+.div__navbar {
+  /* flex: 0 0 12em; */
+  border: 1px solid palevioletred;
+  width: 30%;
+}
+
+.div__appviews {
+  display: flex;
+  flex: 2;
+  border: 1px solid firebrick;
+  /* width: auto; */
+}
+
+.div__footer {
+  min-height: 80px;
+}
+
+@media (min-width: 768px) {
+  .div__main {
+    flex-direction: row;
+    flex: 1;
+  }
+  .div__appviews {
+    flex: 2;
+    /* width:auto ; */
+  }
+
+  .div__navbar {
+    width: 30%;
+    /* flex: 0 0 20em; */
+  }
+
 }
