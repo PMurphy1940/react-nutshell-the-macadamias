@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/header/Header"
 import Footer from "./components/footer/Footer"
@@ -19,7 +19,9 @@ function App() {
         </div>
         <div className="div__main">
             <div className="div__navbar">
-              <Login />
+              {/* <Login /> */}
+              {loggedIn ? <NavBar/> :
+     <Login setLogin={setLogin}/>}
               <NavBar />
               <h3>Messages</h3>
               <Card>
@@ -37,8 +39,6 @@ function App() {
         <footer><div className="div__footer">
             <Footer />
           </div></footer>
-   {loggedIn ? <NavBar/> :
-     <Login setLogin={setLogin}/>}
     </div>
   );
 }
