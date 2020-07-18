@@ -1,0 +1,12 @@
+.messages__display {
+  border: 1px solid black;
+  padding: 1.5em;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.messages__form {
+  border: 1px solid black;
+  margin-top: 1em;
+  padding: 1em;
+}

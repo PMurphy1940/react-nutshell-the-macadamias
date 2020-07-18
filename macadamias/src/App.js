@@ -17,16 +17,16 @@ function App() {
               <Header />
             </div>
             <div className="div__main">
-            <NavBar />
+              <NavBar />
 
-            <div className="div__appviews">
-              <ApplicationViews />
-              <p>Items</p>
+              <div className="div__appviews">
+                <ApplicationViews />
+                <p>Items</p>
+              </div>
+
+              <Messages />
+
             </div>
-
-            <Messages />
-
-        </div>
           <footer>
               <div className="div__footer">
                 <Footer />

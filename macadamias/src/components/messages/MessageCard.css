@@ -11,3 +11,6 @@
   word-spacing: 20px;
 }
 
+.card-text {
+  text-align: left;
+}
