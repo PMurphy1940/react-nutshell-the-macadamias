@@ -25,6 +25,12 @@ export default {
             return response.json();
               })
   },
+  getAllforComponent(basetable) {
+      return fetch(`${remoteURL}/${basetable}`)
+      .then((response) => {
+          return response.json();
+            })
+  },
     getSingleObjectById(id, basetable) {
         return fetch(`${remoteURL}/${basetable}/${id}`)
         .then((response) => {
