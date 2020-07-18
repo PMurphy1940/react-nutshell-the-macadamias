@@ -1,5 +1,3 @@
-
-
 html, body, #app, #app>div {
   height: 100%
 }
@@ -71,7 +69,7 @@ html, body, #app, #app>div {
 }
 
 .div__footer {
-  min-height: 80px;
+  min-height: 30px;
 }
 
 @media (min-width: 768px) {
