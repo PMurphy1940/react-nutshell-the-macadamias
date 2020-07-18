@@ -36,7 +36,13 @@ const MessageForm = ({getMessages}) => {
       messagesAPIcalls.post(newMessageObj)
         .then(() => {
           getMessages()
+          setMessages({
+            userId: "",
+            message: "",
+            date: ""
+          })
           document.getElementById('form').reset()
+          setIsloading(false)
         })
     }
   }
@@ -47,7 +53,7 @@ const MessageForm = ({getMessages}) => {
         <div className="form-group">
           <input type="text" className="form-control" id="message" placeholder="Enter message" onChange={handleFieldChange} />
         </div>
-          <button type="button" className="btn btn-primary" onClick={constructNewMessage}>Send</button>
+          <button type="button" className="btn btn-primary" disabled={isLoading} onClick={constructNewMessage}>Send</button>
       </form>
     </>
   )
