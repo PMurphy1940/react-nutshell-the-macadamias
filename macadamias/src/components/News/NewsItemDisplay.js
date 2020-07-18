@@ -4,13 +4,14 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import "./News.css"
 
 const NewsItemDisplay = (props) => {
   return (
       <>
-       <Card>     
-         <CardBody>
-          <CardTitle>user name</CardTitle>
+       <Card>
+         <CardBody className={(props.activeUser === props.newsItem.userId) ? "active__User__News" : "friend__User__News"}> 
+          <CardTitle>{props.newsItem.user.username}</CardTitle>
           <ReactTinyLink
                 cardSize="small"
                 showGraphic={true}
