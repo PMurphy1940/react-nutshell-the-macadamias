@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import messagesAPIcalls from './messagesAPIcalls';
 import './MessageForm.css'
 
-const MessageForm = ({getMessages}) => {
+const MessageForm = ({getMessages, activeUserId}) => {
   const [messages, setMessages] = useState({
     userId: "",
     message: "",
@@ -10,8 +10,6 @@ const MessageForm = ({getMessages}) => {
   })
 
   const [isLoading, setIsloading] = useState(false)
-
-  const activeUser = JSON.parse(sessionStorage.getItem("credentials"))
 
   const handleFieldChange = (e) => {
     const stateToChange = {...messages}
@@ -28,7 +26,7 @@ const MessageForm = ({getMessages}) => {
       setIsloading(true)
 
       const newMessageObj = {
-        userId: activeUser.activeUserId,
+        userId: activeUserId,
         message: messages.message,
         date: new Date().toLocaleString('en-US', {hour12: false}).replace(',', "")
       }

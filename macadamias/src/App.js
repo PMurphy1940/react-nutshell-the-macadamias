@@ -5,8 +5,6 @@ import Header from "./components/header/Header"
 import Footer from "./components/footer/Footer"
 import NavBar from './components/navbar/NavBar';
 import ApplicationViews from './components/Views/ApplicationViews';
-import Messages from './components/messages/Messages';
-
 
 function App() {
   const [loggedIn, setLogin] = useState(false)
@@ -23,9 +21,6 @@ function App() {
                 <ApplicationViews />
                 <p>Items</p>
               </div>
-
-              <Messages />
-
             </div>
           <footer>
               <div className="div__footer">

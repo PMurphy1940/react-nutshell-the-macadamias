@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./navbar.css";
 import Authentication from "../Auth/Authentication"
+import Messages from '../messages/Messages';
 
 const NavBar = () => {
     const [open, setOpen] = useState(false);
@@ -24,7 +25,7 @@ const NavBar = () => {
                     <a href="#" className="list-group-item list-group-item-action bg-light">Status</a>
                 </div>
             </div>
-
+            <Messages />
         </>
     )
 }
