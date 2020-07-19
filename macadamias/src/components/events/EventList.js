@@ -1,18 +1,23 @@
 // EventList Component
 // Author: David Bruce
 
-import React, { useState,useEffect, Component, createRef, useRef } from 'react';
+import React, { useState,useEffect } from 'react';
 import APIManager from '../../modules/APIManager'
 import EventCard from "./EventCard"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'reactstrap';
-        
-
+      
 const EventList = (props) => {
     //Set initial state
     const [ events, setUserEvents ] = useState([]);
     const [ nextEvent, setNextEvent ] = useState({});
-    // const [ activeUserId, setActiveUserId ] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    // Generate unique keys for static elements
+    const generateKey = (pre) => {
+        const thisKey = `${ pre }_${ new Date().getTime() }`
+        return thisKey;
+    }
 
     const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
 
@@ -55,7 +60,9 @@ const EventList = (props) => {
 
                     setNextEvent(nextEventCalc);
                     setUserEvents(eventArray);
-                   
+                    setIsLoading(false)
+
+               
               });
             })
         };
@@ -66,29 +73,32 @@ const EventList = (props) => {
         getEventList()
         
                     
-    },[]);
+    },[isLoading]);
 
     const deleteEvent = id => {
         APIManager.deleteObject(id,"events")
-            .then(() => props.history.push("/events"))
+            .then(() => { 
+                setIsLoading(true)
+                props.history.push("/events")
+            })
     }
 
     return(
+        
         <>
-        <div className="div__container__component">
-            <div className="div__component__toolbar">
-               <h3 className="header__component__toolbar"> Event Center </h3>               <Button>Add Me An E-vent</Button>
+        <div className="div__container__component" key={generateKey("eventsContainer") } >
+            <div className="div__component__toolbar" id="div__component__toolbar" key={generateKey("eventsToolbar") }>
+               <h3 className="header__component__toolbar"> Event Center </h3><button className="btn" onClick={() => {props.history.push("/events/new")}}><i className="fa fa-plus"></i> Add Me An E-vent</button>
                 
             </div>
-        <div className="container__cards scrollDiv">
-            {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent}
-            {...props} />)}
+            <div className="container__cards scrollDiv" key={generateKey("eventsContainerCards") } >
+                {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent} {...props} />)}
             </div>
         
         </div>
         </>
 
-
+        
     )
 }
 
