@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import NewsAPIManager from "./NewsAPIManager"
 import NewsItemDisplay from "./NewsItemDisplay"
+import ArticleForm from "./NewsArticleForm"
+
 
 
 const NewsFeed = (props) => {
-    let APISearchQuerry = ``
+    // let APISearchQuerry = ``
     //Initial news state is empty//
 const [news, setNews] = useState([])
 const [friends, setFriends] = useState([])
+const [isEditing, setIsEditing] = useState(false)
+
+const editArticle = () => {
+
+}
     //Get the Active User ID number from session storage??
 const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
 
@@ -40,6 +47,8 @@ const newsSearchString = (friends) => {
 const getRelationalNews = (APISearchQuerry) => {
     return NewsAPIManager.getUserAndFriendsNews(APISearchQuerry)
     .then(newsFromAPI => {
+        //sort the news array to put in descending order starting with the newest article//
+        newsFromAPI.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
         setNews(newsFromAPI)
     })
 }
@@ -53,18 +62,26 @@ useEffect(() => {
 //     getRelationalNews();
 // }, [])
 
-console.log("News", news)
+const handleDiscard = () => {
+    setIsEditing(false)
+}
+
 
 
 return(
     <>
+    <button type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article</button>
+    { isEditing && 
+        <ArticleForm {...props} handleDiscard={handleDiscard} />
+    }
    {(news !== undefined) && 
    <>
     {news.map(newsItem =>
             <NewsItemDisplay
             key={newsItem.id}
             newsItem={newsItem}
-            activeUser={activeUser}          
+            activeUser={activeUser}
+            editArticle={editArticle}          
             {...props} />)}
     </>
    }

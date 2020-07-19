@@ -8,8 +8,10 @@ export default {
         .then(response => response.json())
     },
     getUserAndFriendsNews(searchList) {
-        console.log("SearchList", searchList)
         return fetch(`${remoteURL}/news?${searchList}&_expand=user`)
         .then(response => response.json())
+    },
+    postNewArticle(articleObject) {
+
     }
 }
