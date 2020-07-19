@@ -10,23 +10,31 @@ import "./News.css"
 const NewsItemDisplay = (props) => {
   return (
       <>
-       <Card>
+       <Card className="news_Card">
+       
          <CardBody className={(props.activeUser === props.newsItem.userId) ? "active__User__News" : "friend__User__News"}>
-            <div>
-            <CardTitle>{props.newsItem.user.username}</CardTitle>
-            <CardText>{props.newsItem.synopsis}</CardText>
+            
+            <div className="user_News_Cont">
+                <CardTitle>{props.newsItem.user.username}</CardTitle>
+                <p>{shared.dateConverter(props.newsItem.date)}</p>
             </div>
+            <CardText>{props.newsItem.synopsis}</CardText>
+           
           <ReactTinyLink
+                className="TinyLink_Element"
                 cardSize="small"
                 showGraphic={true}
                 maxLine={4}
-                minLine={3}
+                minLine={2}
                 url={props.newsItem.url}
             />
-            <p>{shared.dateConverter(props.newsItem.date)}</p>
+            <div className="user_News_Cont">
             { (props.activeUser === props.newsItem.userId) &&
-            <Button onClick={() => props.editArticle(props.newsItem.id)}>Edit</Button>
+            <button onClick={() => props.editArticle(props.newsItem.id)}>Edit</button>}
+            { (props.activeUser === props.newsItem.userId) &&
+            <button onClick={() => props.deleteArticle(props.newsItem.id)}>Delete</button>
                 }
+            </div>
          </CardBody>
         </Card>
      

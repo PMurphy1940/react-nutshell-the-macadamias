@@ -16,7 +16,7 @@ const ApplicationViews = () =>{
         {/* <Route exact path="/" component={Login}/> */}
         <Route
         exact
-        path="/news"
+        path="/articles"
         render={props => {
             return <NewsFeed {...props}               
             />

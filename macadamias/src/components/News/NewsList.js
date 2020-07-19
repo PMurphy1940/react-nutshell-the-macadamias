@@ -69,22 +69,23 @@ const handleDiscard = () => {
 
 
 return(
-    <>
-    <button type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article</button>
-    { isEditing && 
-        <ArticleForm {...props} handleDiscard={handleDiscard} />
-    }
-   {(news !== undefined) && 
-   <>
-    {news.map(newsItem =>
-            <NewsItemDisplay
-            key={newsItem.id}
-            newsItem={newsItem}
-            activeUser={activeUser}
-            editArticle={editArticle}          
-            {...props} />)}
-    </>
-   }
+    
+    < >
+        <button type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article</button>
+         { isEditing && 
+            <ArticleForm {...props} handleDiscard={handleDiscard} />
+         }
+        {(news !== undefined) && 
+          <div>
+            {news.map(newsItem =>
+                <NewsItemDisplay
+                key={newsItem.id}
+                newsItem={newsItem}
+                activeUser={activeUser}
+                editArticle={editArticle}          
+                {...props} />)}
+          </div>
+         }
     </>
 )
 

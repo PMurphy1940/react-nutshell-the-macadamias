@@ -13,5 +13,10 @@ export default {
     },
     postNewArticle(articleObject) {
 
+    },
+    deleteArticle(id) {
+        return fetch(`${remoteURL}/news/${id}`, {
+            method: "DELETE"
+        }).then(result => result.json())
     }
 }

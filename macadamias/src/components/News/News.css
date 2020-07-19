@@ -3,3 +3,12 @@
     font-style: italic;
     font-size: 1em;
 }
+
+.TinyLink_Element {
+   background-color: darkblue;
+}
+
+.user_News_Cont {
+    display: flex;
+    justify-content: space-between;
+}

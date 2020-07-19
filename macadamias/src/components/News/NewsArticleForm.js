@@ -30,6 +30,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
         <>
          <form>
              <fieldset>
+               <div className="formgrid">
                 <input
                     onChange={handleFieldChange}
                     type="url"
@@ -54,8 +55,9 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     id="synopsis"
                     />
                 <label htmlFor="synopsis">Article synopsis</label>
-             </fieldset>
-             <div className="d-flex justify-content-end">
+              </div>
+            </fieldset>
+            <div className="d-flex justify-content-end">
                     <Button onClick={props.handleDiscard} variant="outline-success">
                          Discard
                     </Button>
