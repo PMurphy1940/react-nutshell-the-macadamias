@@ -35,10 +35,8 @@
 }
 
 .header__itemCard.section__nextEvent {
-    display: flex;
-    justify-content: space-between;
     color:#201b22;
-    background-color:#bec9d6;
+    background-color:#97da41;
     margin: 0;
     padding: 0 5px;
     /* box-sizing: border-box;

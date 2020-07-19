@@ -32,7 +32,7 @@ const EventCard = (props) => {
       <CardBody className="card-content">
 
                 <div className={`header__itemCard header__itemCard--${props.event.id} ${setNextClass}`}>
-                <CardHeader className="card__title">{props.event.name}</CardHeader></div>
+                {props.event.name}</div>
                 <CardText><strong>Date:</strong>  {props.event.date}<br />
                 <strong>Location:</strong>  {props.event.place}
                 </CardText>
