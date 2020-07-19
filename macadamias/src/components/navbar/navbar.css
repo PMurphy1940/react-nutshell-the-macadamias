@@ -3,3 +3,15 @@
     height: 150px;
     border-radius: 50%;
 }
+
+img, .sidebar-heading {
+    margin-bottom: 1em;
+}
+
+.list-group-flush a {
+    margin: -1vh 0;
+}
+
+hr {
+    margin-bottom: .2em;
+}
