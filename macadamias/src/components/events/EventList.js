@@ -8,59 +8,69 @@ import EventCard from "./EventCard"
 const EventList = (props) => {
     //Set initial state
     const [ events, setUserEvents ] = useState([]);
-    const [ friends, setFriends ] = useState([])
     const [ nextEvent, setNextEvent ] = useState({});
-    const [ activeUserId, setActiveUserId ] = useState()
+    // const [ activeUserId, setActiveUserId ] = useState("");
+    
 
-     useEffect(() => {
-        const getFriends = () => {
-        
-            APIManager.getFriends(activeUserId)
-                        .then(myFriends => {
-                        let tempFriendsArray = myFriends.map(friend => { return friend.userId});
-                        tempFriendsArray.push(activeUserId)
-                        return setFriends(tempFriendsArray)
-                    })
-                        
-        };
+    const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
 
-        const getEventList = () => {
+    const getEventList = () => {
+
+        // setActiveUserId(JSON.parse(sessionStorage.getItem("credentials")).activeUserId)
+        //Get Friends first to identify all events for active user and friends
+        APIManager.getFriends(activeUserId)
+            .then(myFriends => {
+            let tempFriendsArray = myFriends.map(friend => { return friend.userId});
+            tempFriendsArray.push(activeUserId)  //Add activeUser for event filter
+            return tempFriendsArray
+        }).then((friends) => {
+            
             const thisDate = new Date();
             //Function to retrieve events from database
-            let eventArray = []
-            let nextEventCalc = {};
+            let eventArray = []; //temp array for sorting and finding next occurring event
+            let nextEventCalc = {}; //temp nextEvent obj for comparison and useState set
+            
+            //Get all events
             return APIManager.getAllforComponent("events")
                 .then(eventsFromAPI => {
+                    //Filter friends and active user events into temp array
                     eventArray = eventsFromAPI.filter(function(event) {
-                        return friends.indexOf(event.userId);
+                          return friends.indexOf(event.userId);
                       });
+                    //sort by date for list
                     eventArray.sort((a, b) => {
                         if (a.date > b.date) return -1;
                         if (a.date < b.date) return 1;
                         return 0;
                     });
+                    //find next event
                     eventArray.forEach((event => {
                         let eventDate = new Date(event.date).getTime();
                         let today = thisDate.getTime();
                         if (eventDate > today) { nextEventCalc = event }
                         if ( eventDate < nextEventCalc.date ) { nextEventCalc = event }
-                    }));
+                    }))
+
                     setNextEvent(nextEventCalc)
                     setUserEvents(eventArray)
               });
+            })
         };
-        setActiveUserId(JSON.parse(sessionStorage.getItem("credentials")).activeUserId)
-        getFriends();
-
-        getEventList()
         
+    
+    useEffect(() => {
+        getEventList()
+    },[]);
 
-    },[friends,activeUserId]);
+    const deleteEvent = id => {
+        APIManager.deleteObject(id,"events")
+            .then(() => props.history.push("/events"))
+    }
 
     return(
         <>
         <div className="div__container__component">
-        {events.map(event => <EventCard key={event.id} event={event} place={event.place}
+        {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent}
          {...props} />)}
             
 
@@ -72,3 +82,5 @@ const EventList = (props) => {
 }
 
 export default EventList
+
+

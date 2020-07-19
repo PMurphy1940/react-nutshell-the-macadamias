@@ -20,7 +20,7 @@ function App() {
 
             <div className="div__appviews">
               <ApplicationViews />
-              <p>Items</p>
+              
             </div>
 
         </div>

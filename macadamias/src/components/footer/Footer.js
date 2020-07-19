@@ -6,7 +6,7 @@ const Footer = () => {
 
     return (
         <div className="container__footer">
-            The Macadamia Team
+            <h6>The Macadamia Team</h6>
         </div>
     )
 

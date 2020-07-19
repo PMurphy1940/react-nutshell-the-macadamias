@@ -57,14 +57,14 @@ html, body, #app, #app>div {
 
 .div__navbar {
   /* flex: 0 0 12em; */
-  border: 1px solid palevioletred;
+  /* border: 1px solid palevioletred; */
   width: 30%;
 }
 
 .div__appviews {
   display: flex;
   flex: 2;
-  border: 1px solid firebrick;
+  /* border: 1px solid firebrick; */
   /* width: auto; */
 }
 
@@ -88,3 +88,4 @@ html, body, #app, #app>div {
   }
 
 }
+
