@@ -1,5 +1,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+/* Main Container for Events */
+.div__container__component {
+   
+    
+}
+
 /* Class for next occurring event */
 .section__nextEvent {
     font-size: medium;
@@ -101,3 +108,4 @@
   .hidden {
       display: none;
   }
+

@@ -4,6 +4,8 @@
 import React, { useState,useEffect } from 'react';
 import APIManager from '../../modules/APIManager'
 import EventCard from "./EventCard"
+import { CardColumns } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const EventList = (props) => {
     //Set initial state
@@ -70,10 +72,11 @@ const EventList = (props) => {
     return(
         <>
         <div className="div__container__component">
-        {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent}
-         {...props} />)}
-            
-
+        <div className="container__cards scrollDiv">
+            {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent}
+            {...props} />)}
+            </div>
+        
         </div>
         </>
 

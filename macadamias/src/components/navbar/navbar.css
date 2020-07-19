@@ -1,6 +1,11 @@
+.container__navbar {
+    width: 15vw;
+    height: auto;
+}
+
 .image-sizing {
-    width: 150px;
-    height: 150px;
+    width: 8vw;
+    height: 13vh;
     border-radius: 50%;
 }
 
@@ -9,7 +14,7 @@ img, .sidebar-heading {
 }
 
 .list-group-flush a {
-    margin: -1vh 0;
+    margin: .1vh 0;
 }
 
 hr {

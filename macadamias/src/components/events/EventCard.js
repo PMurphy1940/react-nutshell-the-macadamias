@@ -25,23 +25,19 @@ const EventCard = (props) => {
   }
      
   return (
-
-    <section className={`section__itemCard event--${props.event.id}  ${setFriendClass}`}>
+    <>
+    <section className={`section__card event--${props.event.id}  ${setFriendClass}`}>
       <div className="div__card__event">
-    <Card className="card" style={{ backgroundColor: `${friendColor}`, borderColor: '#' }} >
-      <CardBody className="card-content">
-
-                <div className={`header__itemCard header__itemCard--${props.event.id} ${setNextClass}`}>
-                {props.event.name}</div>
-                <CardText><strong>Date:</strong>  {props.event.date}<br />
-                <strong>Location:</strong>  {props.event.place}
-                </CardText>
-                <div className="card__button__area"><button className={`btn ${displayClass}`} id="button__event__delete--${event.id}" onClick={() => props.deleteEvent(props.event.id)} ><i className="fa fa-trash"></i></button></div>
-                
-      </CardBody>
-    </Card>
-    </div>
+   
+                <div className={`header__card header__itemCard--${props.event.id} ${setNextClass}`}>{props.event.name}</div>
+                <p><strong>Date:</strong>  {props.event.date}</p>
+                <p><strong>Location:</strong>  {props.event.place}</p>
+                <div className="card__button__area">
+                    <button className={`btn ${displayClass}`} id="button__event__delete--${event.id}" onClick={() => props.deleteEvent(props.event.id)} ><i className="fa fa-trash"></i></button>
+                </div>
+      </div>
     </section>
+    </>
   );
 };
 
