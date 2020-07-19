@@ -30,8 +30,8 @@ const EventCard = (props) => {
       <div className="div__card__event">
    
                 <div className={`header__card header__itemCard--${props.event.id} ${setNextClass}`}>{props.event.name}</div>
-                <p><strong>Date:</strong>  {props.event.date}</p>
-                <p><strong>Location:</strong>  {props.event.place}</p>
+                <p className="card__text"><strong>Date:</strong>  {props.event.date}</p>
+                <p className="card__text"><strong>Location:</strong>  {props.event.place}</p>
                 <div className="card__button__area">
                     <button className={`btn ${displayClass}`} id="button__event__delete--${event.id}" onClick={() => props.deleteEvent(props.event.id)} ><i className="fa fa-trash"></i></button>
                 </div>

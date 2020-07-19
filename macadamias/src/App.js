@@ -19,7 +19,7 @@ function App() {
             <NavBar />
 
             <div className="div__appviews scrollDiv">
-              <ApplicationViews />
+              <ApplicationViews  />
               
             </div>
 

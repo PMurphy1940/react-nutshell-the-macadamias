@@ -4,7 +4,7 @@ import Login from "../Login/Login";
 import NavBar from "../navbar/NavBar";
 import EventList from '../../components/events/EventList';
 
-
+const hasUser = true
 
 const ApplicationViews = () =>{
     return (
@@ -12,7 +12,12 @@ const ApplicationViews = () =>{
         <Route exact path="/login" component={Login}/>
         <Route exact path="/navbar" component={NavBar}/>
         <Route exact path="/events" render={(props) => {
-          return <EventList {...props} />;}} />
+           if (hasUser) {
+            return <EventList {...props} />  
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
         {/* <Route exact path="/" component={Login}/> */}
         </>
     )

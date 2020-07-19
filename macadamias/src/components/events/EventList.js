@@ -1,18 +1,17 @@
 // EventList Component
 // Author: David Bruce
 
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect, Component, createRef, useRef } from 'react';
 import APIManager from '../../modules/APIManager'
 import EventCard from "./EventCard"
-import { CardColumns } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+        
 
 const EventList = (props) => {
     //Set initial state
     const [ events, setUserEvents ] = useState([]);
     const [ nextEvent, setNextEvent ] = useState({});
     // const [ activeUserId, setActiveUserId ] = useState("");
-    
 
     const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
 
@@ -53,15 +52,19 @@ const EventList = (props) => {
                         if ( eventDate < nextEventCalc.date ) { nextEventCalc = event }
                     }))
 
-                    setNextEvent(nextEventCalc)
-                    setUserEvents(eventArray)
+                    setNextEvent(nextEventCalc);
+                    setUserEvents(eventArray);
+                   
               });
             })
         };
         
     
     useEffect(() => {
+
         getEventList()
+        
+                    
     },[]);
 
     const deleteEvent = id => {

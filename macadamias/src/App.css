@@ -70,6 +70,8 @@ html, body, #app, #app>div {
   flex: 2;
   flex-flow: column wrap;
   height: 90%;
+  margin: 0 .04vw 0 0;
+  padding: 0 2vw;
   overflow: scroll;
   /* width: auto; */
 }
@@ -105,7 +107,7 @@ border-radius: 10px;
 }
 
 .scrollDiv::-webkit-scrollbar {
-  width: 7px;
+  width: 12px;
 background-color: #F5F5F5;
 }
 
