@@ -5,6 +5,7 @@ import React, { useState,useEffect, Component, createRef, useRef } from 'react';
 import APIManager from '../../modules/APIManager'
 import EventCard from "./EventCard"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'reactstrap';
         
 
 const EventList = (props) => {
@@ -75,6 +76,7 @@ const EventList = (props) => {
     return(
         <>
         <div className="div__container__component">
+            <Button>Add Me An E-vent</Button>
         <div className="container__cards scrollDiv">
             {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent}
             {...props} />)}

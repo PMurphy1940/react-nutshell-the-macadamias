@@ -1,3 +1,8 @@
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 html, body, #app, #app>div {
   height: 100%
 }
@@ -5,7 +10,7 @@ html, body, #app, #app>div {
 .App {
   display: flex;
   max-height: 100vh;
-  height: 100%;
+  height: calc(100% - 60px);
   flex-direction: column; 
   text-align: center;
 }
@@ -22,7 +27,7 @@ html, body, #app, #app>div {
 }
 
 .App-header {
-  height: 10%;
+  height: 10vh;
   margin: 0 0 .2vh 0;
   background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);  min-height: 10vh;
   display: flex;
@@ -55,15 +60,12 @@ html, body, #app, #app>div {
   display: flex;
   flex-flow: row;
   flex: 1;
-  max-height: 80%;
+  max-height: 80vh;
+  
+
   
 }
 
-.div__navbar {
-  /* flex: 0 0 12em; */
-  border: 1px solid palevioletred;
-  width: 30%;
-}
 
 .div__appviews {
   display: flex;
@@ -77,6 +79,10 @@ html, body, #app, #app>div {
 }
 
 .div__footer {
+  position:absolute;
+left:0;
+bottom:0;
+right:0;
   height: auto;
 }
 
@@ -86,18 +92,13 @@ html, body, #app, #app>div {
     flex: 1;
   }
   .div__appviews {
-    flex: 2;
     overflow-x: hidden;
     overflow-y: auto;
     height: 100%;
     /* width:auto ; */
   }
 
-  .div__navbar {
-    width: 30%;
-    /* flex: 0 0 20em; */
-  }
-
+  
 }
 
 .scrollDiv::-webkit-scrollbar-track {

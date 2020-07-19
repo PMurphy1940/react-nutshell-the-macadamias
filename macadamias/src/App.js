@@ -11,17 +11,16 @@ function App() {
   const [loggedIn, setLogin] = useState(false)
   return (
     <>
-      <div className="App">
+      <div className="App Site">
             <div className="App-header">
               <Header />
             </div>
             <div className="div__main">
-            <NavBar />
+                  <NavBar />
 
-            <div className="div__appviews scrollDiv">
-              <ApplicationViews  />
-              
-            </div>
+              <div className="div__appviews scrollDiv">
+                <ApplicationViews  />
+              </div>
 
         </div>
           <footer>
