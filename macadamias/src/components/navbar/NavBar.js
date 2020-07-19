@@ -24,7 +24,7 @@ const NavBar = () => {
                     <a href="/login" className="list-group-item list-group-item-action bg-light">Login</a>
                 </div>
                 <hr />
-                <div className="div__messages">
+                <div className="div__messages__header">
                     Messages
                 </div>
                 <hr />

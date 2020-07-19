@@ -20,3 +20,7 @@ img, .sidebar-heading {
 hr {
     margin-bottom: .2em;
 }
+
+a, .sidebar-heading, .div__messages__header {
+    text-shadow: 5px 5px 5px #5a6e80;
+}

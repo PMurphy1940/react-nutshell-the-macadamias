@@ -3,10 +3,21 @@
 
 /* Main Container for Events */
 .div__container__component {
-   
-    
+    display: flex;
+    justify-content: space-between;
+    height: 250px;
 }
 
+.div__component__toolbar {
+    display: flex;
+    justify-content: space-between;
+    height: 4vh;
+    margin: 1vh 0;
+}
+
+.header__component__toolbar {
+    text-shadow: 5px 5px 5px #5a6e80;
+}
 
 
 /* Class for next occurring event */

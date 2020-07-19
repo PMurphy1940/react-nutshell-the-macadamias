@@ -76,7 +76,10 @@ const EventList = (props) => {
     return(
         <>
         <div className="div__container__component">
-            <Button>Add Me An E-vent</Button>
+            <div className="div__component__toolbar">
+               <h3 className="header__component__toolbar"> Event Center </h3>               <Button>Add Me An E-vent</Button>
+                
+            </div>
         <div className="container__cards scrollDiv">
             {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent}
             {...props} />)}
