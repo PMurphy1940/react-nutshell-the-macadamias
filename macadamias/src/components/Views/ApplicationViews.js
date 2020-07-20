@@ -4,10 +4,10 @@ import Login from "../Login/Login";
 import NavBar from "../navbar/NavBar";
 import Dashboard from "../Dashboard/Dashboard"
 import EventList from '../../components/events/EventList';
-import EventForm from "../../components/events/EventForm";
 import TaskList from "../../components/tasks/TaskList"
 import TaskForm from "../../components/tasks/TaskForm"
-
+import NewsFeed from "../News/NewsList"
+import EventForm from "../events/EventForm"
 
 
 const ApplicationViews = () =>{
@@ -20,10 +20,12 @@ const ApplicationViews = () =>{
         <Route exact path="/tasks" component={TaskList}></Route>
         <Route exact path="/events/new" component={EventForm}/>
         <Route exact path="/tasks/new" component={TaskForm}/>
-        {/* <Route exact path="/articles" component={}></Route>
-        <Route exact path="/news" component={}></Route>
-        <Route exact path="/comments" component={}></Route> 
-         <Route exact path="/" component={Login}/> */} 
+        <Route
+            exact
+            path="/articles"
+            render={props => {
+                return <NewsFeed {...props} />
+                }} />           
         </>
     )
 }
