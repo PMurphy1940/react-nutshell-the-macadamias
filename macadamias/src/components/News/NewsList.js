@@ -15,14 +15,25 @@ const NewsFeed = (props) => {
 const [news, setNews] = useState([])
 const [friends, setFriends] = useState([])
 const [isEditing, setIsEditing] = useState(false)
+const [articleToEdit, setArticleToEdit] = useState([])
 const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
 const [deleteId, setdeleteId] = useState(0)
 const toggle = () => setConfirmDeleteModal(!confirmDeleteModal);
 const toggleEdit = () => setIsEditing(!isEditing)
 
-const editArticle = () => {
+const editArticle = (id) => {
+    toggleEdit(true);
+    let findArticleToEdit = news.find(newsArticle => {
+       return (newsArticle.id === id)
+    })
+    setArticleToEdit(findArticleToEdit)
+    }
 
-}
+    
+
+    
+        
+
     //Get the Active User ID number from session storage??
 const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
 
@@ -94,7 +105,7 @@ return(
         <h5>Great articles by great people with great internet research skills</h5>
         <button className="news_Button" type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article  &#x270D;</button>
          { isEditing && 
-            <ArticleForm {...props} handleDiscard={handleDiscard} toggleEdit={toggleEdit}/>
+            <ArticleForm {...props} handleDiscard={handleDiscard} toggleEdit={toggleEdit} articleToEdit={articleToEdit}/>
          }
         </div>
         <div className="news__Articles">

@@ -20,6 +20,16 @@ export default {
             body: JSON.stringify(articleObject)
         }).then(data => data.json())
     },
+    updateArticle(articleObject) {
+        return fetch(`${remoteURL}/news/`, {
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(articleObject)
+        }).then(data => data.json())
+    },
+
     deleteArticle(id) {
         return fetch(`${remoteURL}/news/${id}`, {
             method: "DELETE"
