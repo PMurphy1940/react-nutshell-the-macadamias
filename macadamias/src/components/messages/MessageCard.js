@@ -2,8 +2,8 @@ import React from 'react';
 import './MessageCard.css';
 
 const MessageCard = ({message, activeUserId, userFriends}) => {
-  // Maps through each friends object in userFriends array and grabs the friendUserId and stores the array of user's friends id in variable
-  const userFriendsId = userFriends.map(friend => friend.friendUserId)
+  // Maps through each friends object in userFriends array and grabs the userId and stores the array of user's friends id in variable
+  const userFriendsId = userFriends.map(friend => friend.userId)
 
   // Add friend button includes hidden attribute that toggles to 'true' when user id in message matches the active user id in storage session OR when user id in message matches id found in user's friends id array. Add button is only visible to messages belonging to people who are not already friends of the active user.
   // Edit button includes hidden attribute that toggles to 'true' when user id in message DOES NOT match the active user id in session storage. Editing is only available to the active user, cannot edit other people's messages.

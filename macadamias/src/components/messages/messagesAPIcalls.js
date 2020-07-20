@@ -39,7 +39,7 @@ export default {
   },
   // API method retrieves all of active user's friends
   async getUserFriends(activeUserId) {
-    const response = await fetch(`${remoteURL}/friends?userId=${activeUserId}`)
+    const response = await fetch(`${remoteURL}/friends?activeUserId=${activeUserId}`)
     const result = response.json()
     return result
   }
