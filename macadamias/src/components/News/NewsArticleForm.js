@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NewsAPIManager from "./NewsAPIManager";
-import { Button, } from 'reactstrap'
+// import { Button, } from 'reactstrap'
 import RequiredModal from "../Modal"
 
 
@@ -25,6 +25,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
         if (newsArticle.url === "" || newsArticle.title === "" || newsArticle.synopsis === "") {
             setModal(true);          
         }
+        else{
         let newsArticleObject = {
             userId: activeUser,
             url: newsArticle.url,
@@ -34,12 +35,14 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
         }
     //    console.log("News Article", newsArticleObject)
         NewsAPIManager.postNewArticle( newsArticleObject)
+        }
     }
     return (
         <>
          <form>
              <fieldset>
                <div className="formgrid">
+                <label htmlFor="title">Article URL address</label>
                 <input
                     onChange={handleFieldChange}
                     type="url"
@@ -47,7 +50,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     value={newsArticle.url}
                     id="url"
                     />
-                <label htmlFor="title">Article URL address</label>
+                <label htmlFor="title">Article Title</label>
                 <input
                     onChange={handleFieldChange}    
                     type="text"
@@ -55,7 +58,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     value={newsArticle.title}
                     id="title"
                     />
-                <label htmlFor="title">Article Title</label>
+                <label htmlFor="synopsis">Article synopsis</label>
                 <input
                     onChange={handleFieldChange}
                     type="text"
@@ -63,17 +66,17 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     value={newsArticle.synopsis}
                     id="synopsis"
                     />
-                <label htmlFor="synopsis">Article synopsis</label>
+                <div className="button__Space">
+                    <button className="news_Button" onClick={props.handleDiscard} >
+                         Discard &#x1F5D1;
+                    </button>
+                    <button className="news_Button" onClick={makeNewArticle} >
+                         Submit &#x270D;
+                    </button>
+            </div>  
               </div>
             </fieldset>
-            <div className="d-flex justify-content-end">
-                    <Button onClick={props.handleDiscard} variant="outline-success">
-                         Discard
-                    </Button>
-                    <Button onClick={makeNewArticle} variant="outline-success">
-                         Submit
-                    </Button>
-            </div>
+            
          </form>
          <RequiredModal toggle={toggle} modal={modal} modalType="Required"/>
         </>

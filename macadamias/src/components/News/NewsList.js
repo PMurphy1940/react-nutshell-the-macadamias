@@ -82,13 +82,17 @@ const handleDelete = () => {
 
 
 
-return(
-    
+return(   
     < >
-        <button type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article</button>
+    <div className="news__Container">
+      <div className="news__header">
+        <h5>Great articles by great people with great internet research skills</h5>
+        <button className="news_Button" type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article  &#x270D;</button>
          { isEditing && 
             <ArticleForm {...props} handleDiscard={handleDiscard} />
          }
+        </div>
+        <div className="news__Articles">
         {(news !== undefined) && 
           <div>
             {news.map(newsItem =>
@@ -101,12 +105,14 @@ return(
                 {...props} />)}
           </div>
          }
+         </div>
          <RequiredModal 
                 toggle={toggle} 
                 confirmDeleteModal={confirmDeleteModal}  
                 handleDelete={handleDelete}
                 deleteId={deleteId}
                 modalType="Delete"/>
+    </div>
     </>
 )
 

@@ -18,22 +18,22 @@ const NewsItemDisplay = (props) => {
                 <CardTitle>{props.newsItem.user.username}</CardTitle>
                 <p>{shared.dateConverter(props.newsItem.date)}</p>
             </div>
-            <CardText>{props.newsItem.synopsis}</CardText>
-           
-          <ReactTinyLink
+            <div className="tinyLink" >
+            <CardText>{props.newsItem.synopsis}</CardText>       
+            <ReactTinyLink
                 className="TinyLink_Element"
                 cardSize="small"
                 showGraphic={true}
-                maxLine={4}
-                minLine={2}
+                maxLine={2}
+                minLine={1}
                 url={props.newsItem.url}
             />
-            <div className="user_News_Cont">
-            { (props.activeUser === props.newsItem.userId) &&
-            <button onClick={() => props.editArticle(props.newsItem.id)}>Edit</button>}
-            { (props.activeUser === props.newsItem.userId) &&
-            <button onClick={() => props.confirmDelete(props.newsItem.id)}>Delete</button>
-                }
+            </div>
+            <div className="button__Space">
+                    { (props.activeUser === props.newsItem.userId) &&
+                <button className="news_Button" onClick={() => props.confirmDelete(props.newsItem.id)}>Delete &#x1F5D1;</button>}
+                    { (props.activeUser === props.newsItem.userId) &&
+                <button className="news_Button" onClick={() => props.editArticle(props.newsItem.id)}>Edit &#x270D;</button>}          
             </div>
          </CardBody>
         </Card>
