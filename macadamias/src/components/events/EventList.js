@@ -1,4 +1,4 @@
-// EventList Component
+// EventList Component - generates list of events for user/friends, sorts, applies date formatting
 // Author: David Bruce
 
 import React, { useState,useEffect } from 'react';
@@ -6,7 +6,7 @@ import APIManager from '../../modules/APIManager'
 import EventCard from "./EventCard"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Authentication from "../Auth/Authentication";
-      
+
 const EventList = (props) => {
     //Set initial state
     const [ events, setUserEvents ] = useState([]);
@@ -28,7 +28,7 @@ const EventList = (props) => {
         //Get Friends first to identify all events for active user and friends
         APIManager.getFriends(activeUserId)
             .then(myFriends => {
-            let tempFriendsArray = myFriends.map(friend => { return friend.userId});
+            let tempFriendsArray = myFriends.map(friend => { return friend.activeUserId});
             tempFriendsArray.push(activeUserId)  //Add activeUser for event filter
             return tempFriendsArray
         }).then((friends) => {
@@ -76,6 +76,7 @@ const EventList = (props) => {
                     
     },[isLoading]);
 
+  
     const deleteEvent = id => {
         APIManager.deleteObject(id,"events")
             .then(() => { 
@@ -85,20 +86,20 @@ const EventList = (props) => {
     }
 
     return(
-        
+        (!isLoading) ?
         <>
         <div className="div__container__component" key={generateKey("eventsContainer") } >
             <div className="div__component__toolbar" id="div__component__toolbar" key={generateKey("eventsToolbar") }>
-               <h3 className="header__component__toolbar"> Event Center </h3><button className="btn" onClick={() => {props.history.push("/events/new")}}><i className="fa fa-plus"></i> Add Me An E-vent</button>
+               <h3 className="header__component__toolbar"> Event Center </h3><button className="btn" onClick={() => {props.history.push("/events/new")}}><i className="fa fa-plus"></i> Add an Event</button>
                 
             </div>
             <div className="container__cards scrollDiv" key={generateKey("eventsContainerCards") } >
-                {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent} {...props} />)}
+                {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext={nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent} {...props} />)}
             </div>
         
         </div>
         </>
-
+        :null
         
     )
 }

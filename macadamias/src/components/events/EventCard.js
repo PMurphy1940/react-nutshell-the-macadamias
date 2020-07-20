@@ -1,3 +1,6 @@
+//EventCard.js renders event object to React DOM
+//Author: David Bruce
+
 import React from "react";
 import "./Events.css";
 
@@ -5,6 +8,13 @@ const EventCard = (props) => {
   let setFriendClass = ""
   let displayClass = ""
 
+
+  const setNextClass = (props.setNext) ? "section__nextEvent" : ""
+  if (props.activeUserId !== props.event.userId) { 
+    setFriendClass = "section__friend"
+    displayClass = "hidden"
+  }
+  
   const dateConverter= (suppliedDate) => {
     let date = suppliedDate.toString()
     date = date.slice(0,10)
@@ -12,14 +22,9 @@ const EventCard = (props) => {
     return date = `${date[1]}-${date[2]}-${date[0]}`
   }
 
-  props.event.date = dateConverter(props.event.date)
+  const displayDate = dateConverter(props.event.date)
 
-  const setNextClass = (props.setNext) ? "section__nextEvent" : ""
-  if (props.activeUserId !== props.event.userId) { 
-    setFriendClass = "section__friend"
-    displayClass = "hidden"
-  }
-     
+
   return (
     <>
     <section className={`section__card event--${props.event.id}  ${setFriendClass}`}>
@@ -28,7 +33,7 @@ const EventCard = (props) => {
                 <div className={`header__card  ${setNextClass}`}> {props.event.name}
                     <button className={`btn ${displayClass}`} onClick={() => props.deleteEvent(props.event.id)} ><i className="fa fa-trash"></i></button>
                 </div>
-                <p className="card__text"><strong>Date:</strong>  {props.event.date}</p>
+                <p className="card__text"><strong>Date:</strong>  {displayDate}</p>
                 <p className="card__text"><strong>Location:</strong>  {props.event.place}</p>
                
       </div>
