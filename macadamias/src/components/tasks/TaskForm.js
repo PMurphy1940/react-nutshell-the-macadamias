@@ -64,9 +64,9 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
               type="text"
               required
               onChange={handleFieldChange}
-              id="task"
+              id="name"
               placeholder="Task Name"
-              value={task.task}
+              value={task.name}
             />
             <label htmlFor="name">Task</label>
             <input 

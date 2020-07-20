@@ -76,7 +76,7 @@ const TaskList = (props) => {
         // This is an edit, so we need the id
         const editedTask = {
             id: taskObject.id,
-            name: taskObject.task,
+            name: taskObject.name,
             date: taskObject.date,
             complete: true,
             userId: taskObject.userId
