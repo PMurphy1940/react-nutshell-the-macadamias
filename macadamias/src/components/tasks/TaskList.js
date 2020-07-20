@@ -5,6 +5,7 @@ import React, { useState,useEffect } from 'react';
 import APIManager from '../../modules/APIManager'
 import TaskCard from "./TaskCard"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Authentication from "../Auth/Authentication";
       
 const TaskList = (props) => {
     //Set initial state
@@ -119,6 +120,6 @@ const TaskList = (props) => {
     )
 }
 
-export default TaskList
+export default Authentication(TaskList);
 
 

@@ -5,6 +5,7 @@ import React, { useState,useEffect } from 'react';
 import APIManager from '../../modules/APIManager'
 import EventCard from "./EventCard"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Authentication from "../Auth/Authentication";
       
 const EventList = (props) => {
     //Set initial state
@@ -102,6 +103,6 @@ const EventList = (props) => {
     )
 }
 
-export default EventList
+export default Authentication(EventList)
 
 

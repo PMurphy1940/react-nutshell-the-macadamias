@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css"
 import Header from "./components/header/Header"
@@ -8,7 +8,6 @@ import ApplicationViews from './components/Views/ApplicationViews';
 
 
 function App() {
-  const [loggedIn, setLogin] = useState(false)
 
   // Generate unique keys for static elements
   const generateKey = (pre) => {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import APIManager from '../../modules/APIManager'
 import './EventForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Authentication from "../Auth/Authentication";
   
 // Form function for adding events
 const EventForm = props => {
@@ -89,4 +90,4 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
   ))
 };
 
-export default EventForm;
+export default Authentication(EventForm);

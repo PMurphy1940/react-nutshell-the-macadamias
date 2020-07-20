@@ -1,13 +1,7 @@
-import React, { useState, useEffect} from "react";
-import APIManager from "../../modules/APIManager"
+import React from "react";
 import "./Tasks.css";
 
 const TaskCard = (props) => {
-    const [ task, setTask ] = useState({complete: false});
-    const [ isLoading, setIsLoading ] = useState(false);
-
-
-    
 
   let setFriendClass = ""
   let displayClass = ""
@@ -30,7 +24,6 @@ const TaskCard = (props) => {
   
          
   return (
-    (!isLoading) ?
     <>
     <section className={`section__card task--${props.task.id}  ${setFriendClass}`}>
       <div className="div__card__task">
@@ -45,7 +38,6 @@ const TaskCard = (props) => {
       </div>
     </section>
     </>
-    :null
   );
 };
 

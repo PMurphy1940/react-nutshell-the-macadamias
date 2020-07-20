@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import APIManager from '../../modules/APIManager'
 import './TaskForm.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Authentication from "../Auth/Authentication";
   
 // Form function for adding tasks
 const TaskForm = props => {
@@ -85,4 +86,4 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
   ))
 };
 
-export default TaskForm;
+export default Authentication(TaskForm);
