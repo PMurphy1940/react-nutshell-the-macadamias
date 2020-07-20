@@ -33,8 +33,9 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
             synopsis: newsArticle.synopsis,
             date: new Date()
         }
-        // props
+        props.toggleEdit()
         NewsAPIManager.postNewArticle( newsArticleObject)
+        .then(() => props.history.push("/articles"));
         }
     }
     return (

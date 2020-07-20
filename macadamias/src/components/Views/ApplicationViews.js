@@ -20,11 +20,11 @@ const ApplicationViews = () =>{
         <Route exact path="/events/new" component={EventForm}/>
         <Route exact path="/tasks/new" component={TaskForm}/>
         <Route
-        exact
-        path="/articles"
-        render={props => {
-            return <NewsFeed {...props} />
-            }} />           
+            exact
+            path="/articles"
+            render={props => {
+                return <NewsFeed {...props} />
+                }} />           
         </>
     )
 }
