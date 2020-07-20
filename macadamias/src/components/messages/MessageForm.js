@@ -3,20 +3,24 @@ import messagesAPIcalls from './messagesAPIcalls';
 import './MessageForm.css'
 
 const MessageForm = ({getMessages, activeUserId}) => {
+  // Initializing message state
   const [messages, setMessages] = useState({
     userId: "",
     message: "",
     date: ""
   })
 
+  // Initializing isLoading state
   const [isLoading, setIsloading] = useState(false)
 
+  // Method changes the message state according to the user input
   const handleFieldChange = (e) => {
     const stateToChange = {...messages}
     stateToChange[e.target.id] = e.target.value
     setMessages(stateToChange)
   }
 
+  // Method posting new message to API on send event click
   const constructNewMessage = (e) => {
     e.preventDefault()
   
