@@ -12,6 +12,15 @@ const Messages = () => {
   // Initializing user's friends state
   const [userFriends, setUserFriends] = useState([])
 
+  // Initializing state to store message id to be edited
+  const [messageIdEdit, setMessageIdEdit] = useState(null)
+
+  // Method to set message id state with id of messsage to be edited
+  const editMessageId = (id) => {
+    setMessageIdEdit(id)
+    console.log(id)
+  }
+
   // Retrieving active user credentials from session storage, storing activeUserId in variable
   const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
   const activeUserId = activeUser.activeUserId
@@ -42,7 +51,7 @@ const Messages = () => {
     <>
       <div className="messages__container">
         <div className="messages__display">
-          {messages.map(message => <MessageCard key={message.id} message={message} activeUserId={activeUserId} userFriends={userFriends} />)}
+          {messages.map(message => <MessageCard key={message.id} message={message} activeUserId={activeUserId} userFriends={userFriends} editMessageId={editMessageId} />)}
         </div>
         <div className="messages__form">
           <MessageForm getMessages={getMessages} activeUserId={activeUserId} />

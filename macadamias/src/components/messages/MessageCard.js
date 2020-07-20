@@ -1,7 +1,7 @@
 import React from 'react';
 import './MessageCard.css';
 
-const MessageCard = ({message, activeUserId, userFriends}) => {
+const MessageCard = ({message, activeUserId, userFriends, editMessageId}) => {
   // Maps through each friends object in userFriends array and grabs the userId and stores the array of user's friends id in variable
   const userFriendsId = userFriends.map(friend => friend.userId)
 
@@ -16,7 +16,7 @@ const MessageCard = ({message, activeUserId, userFriends}) => {
         </div>
         <div className="">
           <div className="card-body">
-            <h5 className="card-title">{message.user.username} <small className="text-muted">{message.date}</small> <button type="button" className="btn btn-secondary btn-sm" hidden={message.userId !== activeUserId ? true : false}>edit</button></h5>
+            <h5 className="card-title">{message.user.username} <small className="text-muted">{message.date}</small> <button type="button" className="btn btn-secondary btn-sm" hidden={message.userId !== activeUserId ? true : false} onClick={}>edit</button></h5>
             <p className="card-text">
               {message.message}
             </p>
