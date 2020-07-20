@@ -57,7 +57,20 @@ export default {
         },
         body: JSON.stringify(editedObject)
       }).then(response => response.json())
+    },
+   async getFriends(id){
+     let result =  await fetch(`http://localhost:5002/friends?activeUserId=2&_expand=user`)
+      .then(res=>res.json())
+      .then(res=>res)
+      return result
+    },
+    async searchUsers(search){
+      let result = await fetch(`http://localhost:5002/users?username_like=${search}`)
+      .then(res=>res.json())
+      .then(res=>res)
+      return result
     }
+    
    
 }
 

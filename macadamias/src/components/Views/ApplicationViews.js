@@ -5,7 +5,8 @@ import NavBar from "../navbar/NavBar";
 import EventList from '../../components/events/EventList';
 import EventForm from "../../components/events/EventForm";
 import TaskList from "../../components/tasks/TaskList"
-import TaskForm from "../../components/tasks/TaskForm"
+import TaskForm from "../../components/tasks/TaskForm";
+import Friend from "../../components/Friends/Friend";
 
 
 
@@ -19,6 +20,7 @@ const ApplicationViews = () =>{
         <Route exact path="/tasks" component={TaskList}></Route>
         <Route exact path="/events/new" component={EventForm}/>
         <Route exact path="/tasks/new" component={TaskForm}/>
+        <Route exact path="/friends" component={Friend}/>
         {/* <Route exact path="/articles" component={}></Route>
         <Route exact path="/news" component={}></Route>
         <Route exact path="/comments" component={}></Route> 
