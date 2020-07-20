@@ -9,16 +9,6 @@ const EventCard = (props) => {
   let displayClass = ""
 
 
-  //format date simple
-  const dateConverter= (suppliedDate) => {
-    let date = suppliedDate.toString()
-    date = date.slice(0,10)
-    date = date.split("-")
-    return date = `${date[1]}-${date[2]}-${date[0]}`
-  }
-
-  props.event.date = dateConverter(props.event.date)
-
   const setNextClass = (props.setNext) ? "section__nextEvent" : ""
   if (props.activeUserId !== props.event.userId) { 
     setFriendClass = "section__friend"
@@ -33,7 +23,7 @@ const EventCard = (props) => {
                 <div className={`header__card  ${setNextClass}`}> {props.event.name}
                     <button className={`btn ${displayClass}`} onClick={() => props.deleteEvent(props.event.id)} ><i className="fa fa-trash"></i></button>
                 </div>
-                <p className="card__text"><strong>Date:</strong>  {props.event.date}</p>
+                <p className="card__text"><strong>Date:</strong>  {props.eventDate}</p>
                 <p className="card__text"><strong>Location:</strong>  {props.event.place}</p>
                
       </div>

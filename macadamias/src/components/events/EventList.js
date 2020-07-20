@@ -76,6 +76,14 @@ const EventList = (props) => {
                     
     },[isLoading]);
 
+    const dateConverter= (dateValue) => {
+        let date = dateValue.toString()
+        date = date.slice(0,10)
+        date = date.split("-")
+        return date = `${date[1]}-${date[2]}-${date[0]}`
+      }
+
+
     const deleteEvent = id => {
         APIManager.deleteObject(id,"events")
             .then(() => { 
@@ -89,11 +97,11 @@ const EventList = (props) => {
         <>
         <div className="div__container__component" key={generateKey("eventsContainer") } >
             <div className="div__component__toolbar" id="div__component__toolbar" key={generateKey("eventsToolbar") }>
-               <h3 className="header__component__toolbar"> Event Center </h3><button className="btn" onClick={() => {props.history.push("/events/new")}}><i className="fa fa-plus"></i> Add Me An E-vent</button>
+               <h3 className="header__component__toolbar"> Event Center </h3><button className="btn" onClick={() => {props.history.push("/events/new")}}><i className="fa fa-plus"></i> Add an Event</button>
                 
             </div>
             <div className="container__cards scrollDiv" key={generateKey("eventsContainerCards") } >
-                {events.map(event => <EventCard key={event.id} event={event} place={event.place} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent} {...props} />)}
+                {events.map(event => <EventCard key={event.id} event={event} place={event.place} eventDate={dateConverter(event.date)} setNext = {nextEvent.id === event.id} activeUserId={activeUserId} deleteEvent={deleteEvent} {...props} />)}
             </div>
         
         </div>

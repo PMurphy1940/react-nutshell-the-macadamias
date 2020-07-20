@@ -92,6 +92,12 @@ const TaskList = (props) => {
     
     };
 
+    const dateConverter= (dateValue) => {
+        let date = dateValue.toString()
+        date = date.slice(0,10)
+        date = date.split("-")
+        return date = `${date[1]}-${date[2]}-${date[0]}`
+      }
 
     const deleteTask = id => {
         APIManager.deleteObject(id,"tasks")
@@ -106,11 +112,11 @@ const TaskList = (props) => {
         <>
         <div className="div__container__component" key={generateKey("tasksContainer") } >
             <div className="div__component__toolbar" id="div__component__toolbar" key={generateKey("tasksToolbar") }>
-               <h3 className="header__component__toolbar"> Task Center </h3><button className="btn" onClick={() => {props.history.push("/tasks/new")}}><i className="fa fa-plus"></i> Add Me A Task</button>
+               <h3 className="header__component__toolbar"> Task Center </h3><button className="btn" onClick={() => {props.history.push("/tasks/new")}}><i className="fa fa-plus"></i> Add a Task</button>
                 
             </div>
             <div className="container__cards scrollDiv" key={generateKey("tasksContainerCards") } >
-                {tasks.map(task => <TaskCard key={task.id} task={task} checkClass={checkClass} setNext = {nextTask.id === task.id} activeUserId={activeUserId} deleteTask={deleteTask} updateTask={updateTask} {...props} />)}
+                {tasks.map(task => <TaskCard key={task.id} task={task} checkClass={checkClass} taskDate={dateConverter(task.date)} setNext = {nextTask.id === task.id} activeUserId={activeUserId} deleteTask={deleteTask} updateTask={updateTask} {...props} />)}
             </div>
         
         </div>
