@@ -18,6 +18,7 @@ const [isEditing, setIsEditing] = useState(false)
 const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
 const [deleteId, setdeleteId] = useState(0)
 const toggle = () => setConfirmDeleteModal(!confirmDeleteModal);
+const toggleEdit = () => setIsEditing(!isEditing)
 
 const editArticle = () => {
 
@@ -93,7 +94,7 @@ return(
         <h5>Great articles by great people with great internet research skills</h5>
         <button className="news_Button" type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article  &#x270D;</button>
          { isEditing && 
-            <ArticleForm {...props} handleDiscard={handleDiscard} />
+            <ArticleForm {...props} handleDiscard={handleDiscard} toggleEdit={toggleEdit}/>
          }
         </div>
         <div className="news__Articles">
