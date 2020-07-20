@@ -16,7 +16,7 @@ const MessageCard = ({message, activeUserId, userFriends, editMessageId}) => {
         </div>
         <div className="">
           <div className="card-body">
-            <h5 className="card-title">{message.user.username} <small className="text-muted">{message.date}</small> <button type="button" className="btn btn-secondary btn-sm" hidden={message.userId !== activeUserId ? true : false}>edit</button></h5>
+            <h5 className="card-title">{message.user.username} <small className="text-muted">{message.date}</small> <button type="button" className="btn btn-secondary btn-sm" hidden={message.userId !== activeUserId ? true : false} onClick={() => editMessageId(message.id)}>edit</button></h5>
             <p className="card-text">
               {message.message}
             </p>
