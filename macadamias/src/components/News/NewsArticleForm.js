@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import NewsAPIManager from "./NewsAPIManager";
-// import { Button, } from 'reactstrap'
 import RequiredModal from "../Modal"
 
 
@@ -68,10 +67,10 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     id="synopsis"
                     />
                 <div className="button__Space">
-                    <button className="news_Button" onClick={props.handleDiscard} >
+                    <button className="news_Button" type="button" onClick={props.handleDiscard} >
                          Discard &#x1F5D1;
                     </button>
-                    <button className="news_Button" onClick={makeNewArticle} >
+                    <button className="news_Button" type="button" onClick={makeNewArticle} >
                          Submit &#x270D;
                     </button>
             </div>  
