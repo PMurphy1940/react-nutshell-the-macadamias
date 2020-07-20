@@ -1,23 +1,42 @@
 /* Header Section */
 .container__footer {
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: center;
-  text-align: center;
-  padding: 0 .3em;
-  color:rgb(241, 241, 226);
-  /* background-image:url("../../images/cloudsheader.jpg"); */
-  background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);  min-height: 8vh;
-  background-color: midnightblue;
-   
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
+    padding: 0 .3em;
+    color:rgb(241, 241, 226);
+    /* background-image:url("../../images/cloudsheader.jpg"); */
+    background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);  min-height: 8vh;
+    background-color: midnightblue;
+    flex-shrink: 1;
+    height: 8vh;
   }
+
+  .footer__text {
+      
+        margin-top: 2vh;
+    
+  }
+
+  h6 {
+        font-size: large;
+      font-style: oblique;
+  }
+
+  h6:hover {
+      font-size: larger;
+      color: rgb(105, 238, 231);
+      transition: all .9s;
+      transition-duration: 5s;
+  }
+
+
     
       .body__footer {
         display: flex;
         flex-flow: row;
-          height: auto;
+          max-height: auto;
           width: auto;
           justify-content: center;
           font-size: small;
