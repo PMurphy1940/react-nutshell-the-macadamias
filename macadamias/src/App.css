@@ -1,14 +1,18 @@
-
-
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 html, body, #app, #app>div {
   height: 100%
 }
 
 .App {
   display: flex;
-  min-height: 100vh;
+  max-height: 100vh;
+  height: calc(100% - 60px);
   flex-direction: column; 
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -23,6 +27,8 @@ html, body, #app, #app>div {
 }
 
 .App-header {
+  height: 10vh;
+  margin: 0 0 .2vh 0;
   background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);  min-height: 10vh;
   display: flex;
   flex-direction: row;
@@ -54,24 +60,30 @@ html, body, #app, #app>div {
   display: flex;
   flex-flow: row;
   flex: 1;
+  max-height: 80vh;
+  
+
   
 }
 
-.div__navbar {
-  /* flex: 0 0 12em; */
-  border: 1px solid palevioletred;
-  width: 30%;
-}
 
 .div__appviews {
   display: flex;
   flex: 2;
-  border: 1px solid firebrick;
+  flex-flow: column wrap;
+  height: 90%;
+  margin: 0 .04vw 0 0;
+  padding: 0 2vw;
+  overflow: scroll;
   /* width: auto; */
 }
 
 .div__footer {
-  min-height: 80px;
+  position:absolute;
+left:0;
+bottom:0;
+right:0;
+  height: auto;
 }
 
 @media (min-width: 768px) {
@@ -80,13 +92,34 @@ html, body, #app, #app>div {
     flex: 1;
   }
   .div__appviews {
-    flex: 2;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
     /* width:auto ; */
   }
 
-  .div__navbar {
-    width: 30%;
-    /* flex: 0 0 20em; */
-  }
+  
+}
 
+.scrollDiv::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+background-color: #F5F5F5;
+border-radius: 10px;
+}
+
+.scrollDiv::-webkit-scrollbar {
+  width: 12px;
+background-color: #F5F5F5;
+}
+
+.scrollDiv::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+background-color: #FFF;
+background-image: -webkit-gradient(linear,
+                   40% 0%,
+                   75% 84%,
+                   from(rgb(153, 218, 127)),
+                   to(#127492),
+                   color-stop(.6,#161d79))
 }

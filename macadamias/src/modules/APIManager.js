@@ -25,6 +25,12 @@ export default {
             return response.json();
               })
   },
+  getAllforComponent(basetable) {
+      return fetch(`${remoteURL}/${basetable}`)
+      .then((response) => {
+          return response.json();
+            })
+  },
     getSingleObjectById(id, basetable) {
         return fetch(`${remoteURL}/${basetable}/${id}`)
         .then((response) => {
@@ -43,18 +49,15 @@ export default {
             return response.json();
               })
   },
-    update(editedObject, basetable) {
-        return fetch(`${remoteURL}/${basetable}/${editedObject.id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedObject)
-            .then((response) => {
-                return response.json();
-     })
-   })
-   }
+  update(editedObject,basetable) {
+      return fetch(`${remoteURL}/${basetable}/${editedObject.id}`, {
+        method: "PUT",                    
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editedObject)
+      }).then(response => response.json())
+    }
    
 }
 

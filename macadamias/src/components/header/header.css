@@ -1,5 +1,5 @@
 /* Header Section */
-header {
+.banner__header {
   position:relative;
   overflow:hidden;
   display:flex;
@@ -9,18 +9,15 @@ header {
   align-content: center;
   text-align: center;
   /* background:#99e98f url("../../images/fieldheader.jpg"); */
-  background-size:cover;
-  height:5vw;
   padding: 0 .3em;
-  min-height:100px;
-  max-height:550px;
-  min-width:300px;
+  height: 5vh;
   color:rgb(241, 241, 226);
-  background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);
+  background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,#151836 100%);
   border-radius: 10px;
+  flex-shrink: 1;
     }
     
-    .header:after{
+    .banner__header:after{
         content:"";
         width:100%;
         height:100%;
@@ -31,7 +28,7 @@ header {
        background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);
       }
 
-    .header:before{
+      .banner__header:before{
         content:"";
         width:100%;
         height:100%;
@@ -49,10 +46,6 @@ header {
         z-index:-2
       }
       
-      .header a{
+      .banner__header a{
         color:#eee
-      }
-
-      h1 {
-        text-shadow: 5px 5px 5px #5a6e80;
       }

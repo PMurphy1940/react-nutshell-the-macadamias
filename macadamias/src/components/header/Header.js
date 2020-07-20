@@ -3,7 +3,7 @@ import './header.css'
 const Header = () => {
     return (
         <header className="banner header">
-        <h1 className="banner__header">Nutshell Community Portal</h1>
+        <div className="banner__header">Nutshell Community Portal</div>
         </header>
     )
 
