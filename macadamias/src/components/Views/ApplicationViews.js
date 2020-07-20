@@ -7,13 +7,13 @@ import TaskList from "../../components/tasks/TaskList"
 import TaskForm from "../../components/tasks/TaskForm"
 import NewsFeed from "../News/NewsList"
 import EventForm from "../events/EventForm"
+import Messages from '../messages/Messages';
 
 
 const ApplicationViews = () =>{
     return (
         <>
         <Route exact path="/login" component={Login}/>
-        <Route exact path="/navbar" component={NavBar}/>
         <Route exact path="/events" render={(props) => {
           return <EventList {...props} />;}} />
         <Route exact path="/tasks" component={TaskList}></Route>
@@ -24,7 +24,8 @@ const ApplicationViews = () =>{
             path="/articles"
             render={props => {
                 return <NewsFeed {...props} />
-                }} />           
+                }} />
+        <Route exact path="/messages" render={props => <Messages />} />
         </>
     )
 }

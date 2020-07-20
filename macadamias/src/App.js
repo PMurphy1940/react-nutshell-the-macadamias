@@ -22,12 +22,11 @@ function App() {
               <Header />
             </div>
             <div className="div__main" key={generateKey("divMain")}>
-                  <NavBar />
+              <NavBar />
 
               <div className="div__appviews scrollDiv" key={generateKey("divAppViews")}>
                 <ApplicationViews  />
               </div>
-
         </div>
           <footer key={generateKey("AppFooter")}>
               <div className="div__footer" key={generateKey("AppDivFooter")}>
