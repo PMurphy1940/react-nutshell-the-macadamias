@@ -43,7 +43,7 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
   const constructNewTask = evt => {
     // Prtask Default Activity (don't refresh)
     evt.preventDefault();
-    if (task.name === "" || task.date === "") {
+    if (task.task === "" || task.date === "") {
       window.alert("Please input a name, date, and place for your task");
     } else {
       setIsLoading(true);
@@ -64,9 +64,9 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
               type="text"
               required
               onChange={handleFieldChange}
-              id="name"
+              id="task"
               placeholder="Task Name"
-              value={task.name}
+              value={task.task}
             />
             <label htmlFor="name">Task</label>
             <input 

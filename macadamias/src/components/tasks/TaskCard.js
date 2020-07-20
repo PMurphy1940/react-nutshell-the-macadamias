@@ -23,7 +23,7 @@ const TaskCard = (props) => {
     <section className={`section__card task--${props.task.id}  ${setFriendClass}`}>
       <div className="div__card__task">
    
-                <div className={`header__card  ${setNextClass}`}> {props.task.name}
+                <div className={`header__card  ${setNextClass}`}> {props.task.task}
                     <button className={`btn ${displayClass}`} onClick={() => props.deleteTask(props.task.id)} ><i className="fa fa-trash"></i></button>
                 </div>
                 <p className="card__text"><strong>Date:</strong>  {props.taskDate}</p>
