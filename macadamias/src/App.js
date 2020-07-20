@@ -16,11 +16,9 @@ function App() {
               <Header />
             </div>
             <div className="div__main">
-            <NavBar />
-
+              <NavBar />
             <div className="div__appviews">
-              <ApplicationViews />
-             
+              <ApplicationViews />            
             </div>
 
         </div>

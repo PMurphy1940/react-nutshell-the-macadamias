@@ -1,3 +1,6 @@
+//Author => Patrick Murphy
+//This module supplies the JSX card for each mapped news article from NewsList.js//
+
 import React from 'react';
 import { ReactTinyLink } from 'react-tiny-link'
 import {
@@ -36,8 +39,7 @@ const NewsItemDisplay = (props) => {
                 <button className="news_Button" onClick={() => props.editArticle(props.newsItem.id)}>Edit &#x270D;</button>}          
             </div>
          </CardBody>
-        </Card>
-     
+        </Card>     
     </>
   );
 };

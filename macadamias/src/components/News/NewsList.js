@@ -1,3 +1,6 @@
+//Author => Patrick Murphy
+//This module GETs the user and user friends news article the routes those returns to generate the NewsFeed view//
+
 import React, { useState, useEffect } from 'react';
 import NewsAPIManager from "./NewsAPIManager"
 import NewsItemDisplay from "./NewsItemDisplay"
