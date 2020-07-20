@@ -79,6 +79,7 @@ const confirmDelete = (id) => {
 }
 
 const handleDelete = () => {
+    setconfirmDeleteModal(false)
     NewsAPIManager.deleteArticle(deleteId)
     .then(() => getRelationalNews())
 }

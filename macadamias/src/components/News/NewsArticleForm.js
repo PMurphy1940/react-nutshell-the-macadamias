@@ -33,6 +33,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
             synopsis: newsArticle.synopsis,
             date: new Date()
         }
+        setModal(false)
     //    console.log("News Article", newsArticleObject)
         NewsAPIManager.postNewArticle( newsArticleObject)
         }
