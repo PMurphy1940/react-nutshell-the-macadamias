@@ -34,7 +34,7 @@ const TaskList = (props) => {
             //Get all tasks
             return APIManager.getAllforComponent("tasks")
                 .then(tasksFromAPI => {
-                    //Filter friends and active user tasks into temp array
+                    //Filter active user tasks into temp array
                     taskArray = tasksFromAPI.filter(function(task) {
                           return (task.userId === activeUserId && task.complete === false);
                       });

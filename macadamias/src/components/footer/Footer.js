@@ -1,3 +1,6 @@
+//Footer.js component
+//Author: David Bruce
+
 import React from "react";
 import "./footer.css"
 

@@ -1,3 +1,6 @@
+//API Manager Modules
+//Author: David Bruce
+
 const remoteURL = "http://localhost:5002";
 
 export default {

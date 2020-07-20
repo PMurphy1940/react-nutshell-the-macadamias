@@ -1,3 +1,6 @@
+//EventCard.js Component - responsible for Event object to React DOM
+//Author: David Bruce
+
 import React from "react";
 import "./Events.css";
 
@@ -5,6 +8,8 @@ const EventCard = (props) => {
   let setFriendClass = ""
   let displayClass = ""
 
+
+  //format date simple
   const dateConverter= (suppliedDate) => {
     let date = suppliedDate.toString()
     date = date.slice(0,10)

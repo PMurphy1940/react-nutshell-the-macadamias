@@ -1,3 +1,7 @@
+/* TaskList and Task Card CSS
+Author: David Bruce */
+
+/* For buttons */
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -24,8 +28,6 @@
 .section__nextTask {
     font-size: medium;
     font-weight: 100;
-    /* box-sizing: border-box;
-    box-shadow:0 2px 6px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19); */
     margin: px 2px 2px 2px;
     border-radius: 5px;   
     font-weight: 700;
@@ -47,7 +49,7 @@
     box-sizing: border-box;
     box-shadow:0 2px 6px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
     border: 2px solid rgba(117, 161, 161, 0.1);
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .card__text {
@@ -139,10 +141,7 @@
     padding-left: 1%;
     margin-right: 1%;
     transition: .7s    
-     
-        
-    
-  }
+   }
 
   
   .checkbox:active:after {

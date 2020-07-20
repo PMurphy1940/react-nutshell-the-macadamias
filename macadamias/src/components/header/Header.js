@@ -1,3 +1,6 @@
+//Header.js 
+//Author: David Bruce
+
 import React from "react";
 import './header.css'
 const Header = () => {

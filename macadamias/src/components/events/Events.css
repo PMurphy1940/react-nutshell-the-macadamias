@@ -1,3 +1,7 @@
+/* EventList & Card CSS
+Author: David Bruce */
+
+/* For Buttons */
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -24,8 +28,8 @@
 .section__nextEvent {
     font-size: medium;
     font-weight: 100;
-    /* box-sizing: border-box;
-    box-shadow:0 2px 6px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19); */
+    box-sizing: border-box;
+    box-shadow:0 2px 6px 0 rgba(151,218, 65, 0.6),0 4px 20px 0 rgba(17, 33, 105, 0.3);
     margin: px 2px 2px 2px;
     border-radius: 5px;   
     font-weight: 700;
@@ -41,11 +45,11 @@
 }
 
 .section__card {
-    margin: .1vh .1vw;
+    margin: .3vh .1vw;
     padding: 1vh 0;
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
-    box-shadow:0 2px 6px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
+    box-shadow:0 2px 6px 0 rgba(151,218, 65, 0.6),0 4px 20px 0 rgba(17, 33, 105, 0.3);
     border: 2px solid rgba(117, 161, 161, 0.1);
     border-radius: 4px;
 }
@@ -84,30 +88,28 @@
     border-radius: 5px;
 }
  
-
 .card__button__area {
     display: flex;
     justify-content: flex-end;
-    /* justify-content: space-between; */
     text-align: left;
     margin: 0 1vw 0 0;
     padding: 0 0;
 }
 
-/* Style buttons */
+/* Button CSS */
 .btn {
-    background-color: DodgerBlue; /* Blue background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
+    background-color: DodgerBlue;
+    border: none; 
+    color: white; 
     margin: .3vh .3vw;
-    font-size: .6em; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
+    font-size: .6em;
+    cursor: pointer; 
     box-sizing: border-box;
     box-shadow:0 2px 6px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
     border-radius: 30px;
   }
   
-  /* Darker background on mouse-over */
+  
   .btn:hover {
     background-color: RoyalBlue;
   }
@@ -118,10 +120,10 @@
     background-color: rgb(107, 167, 195);
     display: block;
     position: absolute;
-    padding-top: 10%;
-    padding-right: 10%;
-    margin-right: -20px!important;
-    margin-top: -10%;
+    padding-top: 1%;
+    padding-right: 1%;
+    margin-right: -2px;
+    margin-top: -1%;
     opacity: 0;
     transition: all 0.8s
   }

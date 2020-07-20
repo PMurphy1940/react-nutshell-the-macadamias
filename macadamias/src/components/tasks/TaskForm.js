@@ -1,3 +1,6 @@
+//TaskForm.js Component - responsible for adding a new task
+//Author: David Bruce
+
 import React, { useState } from 'react';
 import APIManager from '../../modules/APIManager'
 import './TaskForm.css';
@@ -12,7 +15,7 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
   //useState for task (local to TaskForm) that will update the named fields of the object
   const [task, setTask] = useState({ task: "", date: "" , complete: false, userId: activeUserId});
 
-  //useState to determine if form is loading, so buttons will be disabled if true
+  //useState to restrict return of html to a non-loading state
   const [isLoading, setIsLoading] = useState(false);
 
   
@@ -34,8 +37,12 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
 
   };
 
-  /*  Local method for validation, set loadingStatus, create task      object, invoke the taskManager post method, and redirect to the full task list
+  /*  Local method for validation, set loadingStatus, create task object, invoke the taskManager post method, and redirect to the full task list
   */
+  const cancelTask = evt => {
+    props.history.push("/tasks")
+  }
+
   const constructNewTask = evt => {
     // Prtask Default Activity (don't refresh)
     evt.preventDefault();
@@ -53,6 +60,7 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
   return (
     (!isLoading) && (
     <>
+     <div className="div__form__task">
       <form>
         <fieldset>
           <div className="formgrid">
@@ -73,15 +81,24 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
             <label htmlFor="date">Date</label>
             
           </div>
-          <div className="alignRight">
+          <div className="div__task__buttons">
             <button
               type="button"
+              className="btn"
               disabled={isLoading}
               onClick={constructNewTask}
-            >Submit</button>
+            >Save</button>
+            <button
+              type="button"
+              className="btn"
+              disabled={isLoading}
+              onClick={cancelTask}
+            >Nevermind</button>
           </div>
         </fieldset>
       </form>
+
+      </div>
     </>
   ))
 };

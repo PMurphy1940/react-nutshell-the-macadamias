@@ -1,11 +1,14 @@
+//TaskCard.js Component - responsible for Task object to React DOM
+//Author: David Bruce
+
 import React from "react";
 import "./Tasks.css";
 
 const TaskCard = (props) => {
 
-  let setFriendClass = ""
-  let displayClass = ""
+   let displayClass = ""
 
+  //format date simple
   const dateConverter= (suppliedDate) => {
     let date = suppliedDate.toString()
     date = date.slice(0,10)
@@ -15,17 +18,12 @@ const TaskCard = (props) => {
 
   props.task.date = dateConverter(props.task.date)
 
+  //Highlight next occurring Task date
   const setNextClass = (props.setNext) ? "section__nextTask" : ""
-  if (props.activeUserId !== props.task.userId) { 
-    setFriendClass = "section__friend"
-    displayClass = "hidden"
-  }
-
-  
-         
+ 
   return (
     <>
-    <section className={`section__card task--${props.task.id}  ${setFriendClass}`}>
+    <section className={`section__card task--${props.task.id}  `}>
       <div className="div__card__task">
    
                 <div className={`header__card  ${setNextClass}`}> {props.task.task}

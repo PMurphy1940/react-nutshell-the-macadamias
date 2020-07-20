@@ -28,7 +28,7 @@ const EventList = (props) => {
         //Get Friends first to identify all events for active user and friends
         APIManager.getFriends(activeUserId)
             .then(myFriends => {
-            let tempFriendsArray = myFriends.map(friend => { return friend.userId});
+            let tempFriendsArray = myFriends.map(friend => { return friend.activeUserId});
             tempFriendsArray.push(activeUserId)  //Add activeUser for event filter
             return tempFriendsArray
         }).then((friends) => {
