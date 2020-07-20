@@ -9,6 +9,7 @@ import RequiredModal from "../Modal"
 const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
     const [newsArticle, setNewsArticle] = useState({ userId: userId, url: url, title: title, synopsis: synopsis, date: ""})
     const [isLoading, setIsLoading] = useState(true)
+    const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
 
     const handleFieldChange = event => {
         let target = event.target
@@ -19,12 +20,20 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
     const toggle = () => setModal(!modal);
 
     const makeNewArticle = event => {
-        console.log("News Article", newsArticle)
         event.preventDefault();
+        // setNewsArticle({...newsArticle, date: new Date(), userId: activeUser})
         if (newsArticle.url === "" || newsArticle.title === "" || newsArticle.synopsis === "") {
             setModal(true);          
         }
-        NewsAPIManager.postNewArticle(newsArticle)
+        let newsArticleObject = {
+            userId: activeUser,
+            url: newsArticle.url,
+            title: newsArticle.title,
+            synopsis: newsArticle.synopsis,
+            date: new Date()
+        }
+    //    console.log("News Article", newsArticleObject)
+        NewsAPIManager.postNewArticle( newsArticleObject)
     }
     return (
         <>

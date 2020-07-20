@@ -12,7 +12,13 @@ export default {
         .then(response => response.json())
     },
     postNewArticle(articleObject) {
-
+        return fetch(`${remoteURL}/news/`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(articleObject)
+        }).then(data => data.json())
     },
     deleteArticle(id) {
         return fetch(`${remoteURL}/news/${id}`, {
