@@ -15,9 +15,9 @@ const NewsFeed = (props) => {
 const [news, setNews] = useState([])
 const [friends, setFriends] = useState([])
 const [isEditing, setIsEditing] = useState(false)
-const [confirmDeleteModal, setconfirmDeleteModal] = useState(false)
+const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
 const [deleteId, setdeleteId] = useState(0)
-const toggle = () => setconfirmDeleteModal(!confirmDeleteModal);
+const toggle = () => setConfirmDeleteModal(!confirmDeleteModal);
 
 const editArticle = () => {
 
@@ -75,11 +75,11 @@ const handleDiscard = () => {
 }
 const confirmDelete = (id) => {
     setdeleteId(id)
-    setconfirmDeleteModal(true)
+    setConfirmDeleteModal(true)
 }
 
 const handleDelete = () => {
-    setconfirmDeleteModal(false)
+    setConfirmDeleteModal(false)
     NewsAPIManager.deleteArticle(deleteId)
     .then(() => getRelationalNews())
 }

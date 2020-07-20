@@ -41,7 +41,9 @@
     padding: 2em;
     margin: 1em;
 }
-
+.button__Space {
+    display: flex;
+}
 .news_Button {
     margin: 1em 0 .5em 1em ;
 }
