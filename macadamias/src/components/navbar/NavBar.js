@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./navbar.css";
-import Authentication from "../Auth/Authentication"
+import Authentication from "../Auth/Authentication";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     const [open, setOpen] = useState(false);
@@ -16,12 +17,12 @@ const NavBar = () => {
                 </div>
                 <div className="sidebar-heading">Welcome </div>
                 <div className="list-group list-group-flush">
-                    <a href="/" className="list-group-item list-group-item-action bg-light">Dashboard</a>
-                    <a href="/friends" className="list-group-item list-group-item-action bg-light">Friends</a>
-                    <a href="/articles" className="list-group-item list-group-item-action bg-light">Articles</a>
-                    <a href="/events" className="list-group-item list-group-item-action bg-light">Events</a>
-                    <a href="/tasks" className="list-group-item list-group-item-action bg-light">Tasks</a>
-                    <a href="/login" className="list-group-item list-group-item-action bg-light">Login</a>
+                    <Link to="/" className="list-group-item list-group-item-action bg-light">Dashboard</Link>
+                    <Link to="/friends" className="list-group-item list-group-item-action bg-light">Friends</Link>
+                    <Link to="/articles" className="list-group-item list-group-item-action bg-light">Articles</Link>
+                    <Link to="/events" className="list-group-item list-group-item-action bg-light" >Events</Link>
+                    <Link to="/tasks" className="list-group-item list-group-item-action bg-light">Tasks</Link>
+                    <Link to="/login" className="list-group-item list-group-item-action bg-light">Login</Link>
                 </div>
                 <hr />
                 <div className="div__messages">

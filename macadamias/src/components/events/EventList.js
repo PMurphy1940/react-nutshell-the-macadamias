@@ -59,6 +59,7 @@ const EventList = (props) => {
 
     return(
         <>
+        <h1>Events</h1>
         <div className="div__container__component">
         {events.map(event => <EventCard key={event.id} event={event} place={event.place}
          {...props} />)}
