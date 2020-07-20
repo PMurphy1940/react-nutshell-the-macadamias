@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NewsAPIManager from "./NewsAPIManager";
 import { Button, } from 'reactstrap'
-import RequiredModal from "./NewsModal"
+import RequiredModal from "../Modal"
 
 
 
@@ -66,7 +66,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     </Button>
             </div>
          </form>
-         <RequiredModal toggle={toggle} modal={modal}/>
+         <RequiredModal toggle={toggle} modal={modal} modalType="Required"/>
         </>
     )
 }

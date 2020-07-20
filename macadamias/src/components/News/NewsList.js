@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NewsAPIManager from "./NewsAPIManager"
 import NewsItemDisplay from "./NewsItemDisplay"
 import ArticleForm from "./NewsArticleForm"
+import RequiredModal from "../Modal"
 
 
 
@@ -11,6 +12,9 @@ const NewsFeed = (props) => {
 const [news, setNews] = useState([])
 const [friends, setFriends] = useState([])
 const [isEditing, setIsEditing] = useState(false)
+const [confirmDeleteModal, setconfirmDeleteModal] = useState(false)
+const [deleteId, setdeleteId] = useState(0)
+const toggle = () => setconfirmDeleteModal(!confirmDeleteModal);
 
 const editArticle = () => {
 
@@ -49,6 +53,7 @@ const getRelationalNews = (APISearchQuerry) => {
     .then(newsFromAPI => {
         //sort the news array to put in descending order starting with the newest article//
         newsFromAPI.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
+        //Here comes the render//
         setNews(newsFromAPI)
     })
 }
@@ -64,6 +69,15 @@ useEffect(() => {
 
 const handleDiscard = () => {
     setIsEditing(false)
+}
+const confirmDelete = (id) => {
+    setdeleteId(id)
+    setconfirmDeleteModal(true)
+}
+
+const handleDelete = () => {
+    NewsAPIManager.deleteArticle(deleteId)
+    .then(() => getRelationalNews())
 }
 
 
@@ -82,10 +96,17 @@ return(
                 key={newsItem.id}
                 newsItem={newsItem}
                 activeUser={activeUser}
-                editArticle={editArticle}          
+                editArticle={editArticle}
+                confirmDelete={confirmDelete}          
                 {...props} />)}
           </div>
          }
+         <RequiredModal 
+                toggle={toggle} 
+                confirmDeleteModal={confirmDeleteModal}  
+                handleDelete={handleDelete}
+                deleteId={deleteId}
+                modalType="Delete"/>
     </>
 )
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactTinyLink } from 'react-tiny-link'
 import {
   Card, CardText, CardBody,
-  CardTitle, Button
+  CardTitle
 } from 'reactstrap';
 import shared from "../MiscSharedFunctions"
 import "./News.css"
@@ -32,7 +32,7 @@ const NewsItemDisplay = (props) => {
             { (props.activeUser === props.newsItem.userId) &&
             <button onClick={() => props.editArticle(props.newsItem.id)}>Edit</button>}
             { (props.activeUser === props.newsItem.userId) &&
-            <button onClick={() => props.deleteArticle(props.newsItem.id)}>Delete</button>
+            <button onClick={() => props.confirmDelete(props.newsItem.id)}>Delete</button>
                 }
             </div>
          </CardBody>
