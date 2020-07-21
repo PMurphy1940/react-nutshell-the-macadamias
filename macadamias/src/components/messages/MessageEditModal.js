@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import messagesAPIcalls from './messagesAPIcalls';
 
-const MessageEditModal = ({messageIdEdit, modal, toggle}) => {
+const MessageEditModal = ({messageIdEdit, modal, toggle, getMessages}) => {
   const [message, setMessage] = useState({
     userId: "",
     message: "",
@@ -34,6 +34,10 @@ const MessageEditModal = ({messageIdEdit, modal, toggle}) => {
     }
 
     messagesAPIcalls.update(editedMessage)
+      .then(() => {
+        toggle()
+        getMessages()
+      })
   }
 
   useEffect(() => {

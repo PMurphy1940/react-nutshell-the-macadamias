@@ -58,7 +58,7 @@ const Messages = () => {
     <>
       <div className="messages__container">
         <div className="messages__display">
-          <MessageEditModal messageIdEdit={messageIdEdit} modal={modal} toggle={toggle} />
+          <MessageEditModal messageIdEdit={messageIdEdit} modal={modal} toggle={toggle} getMessages={getMessages} />
           {messages.map(message => <MessageCard key={message.id} message={message} activeUserId={activeUserId} userFriends={userFriends} editMessageId={editMessageId} />)}
         </div>
         <div className="messages__form">
