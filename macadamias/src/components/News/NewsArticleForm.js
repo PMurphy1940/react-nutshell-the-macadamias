@@ -57,14 +57,13 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
 
             //Logic for deciding POST or PUT//
             if (props.formType === "isEdit") {
-                console.log("Edit Article", newsArticleObject)
                 NewsAPIManager.updateArticle(props.articleToEdit.id, newsArticleObject)
-                .then(() => props.history.push("/articles"));
+                .then(() => props.getRelationalNews());
             }
              
             else if (props.formType === "isPost") {
               NewsAPIManager.postNewArticle(newsArticleObject)
-                .then(() => props.history.push("/articles"));
+                .then(() => props.getRelationalNews());
             }}            
         }
         
@@ -72,8 +71,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
         <>
          <form>
              <fieldset>
-               <div className="formgrid">
-                <label htmlFor="url">Article URL address</label>
+               <div className="formgrid">                
                 <input
                     onChange={handleFieldChange}
                     type="url"
@@ -81,7 +79,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     value={newsArticle.url}
                     id="url"
                     />
-                <label htmlFor="title">Article Title</label>
+                <label htmlFor="url">Article URL address</label>                
                 <input
                     onChange={handleFieldChange}    
                     type="text"
@@ -90,7 +88,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     maxLength="47"
                     id="title"
                     />
-                <label htmlFor="synopsis">Article synopsis</label>
+                <label htmlFor="title">Article Title</label>               
                 <input
                     onChange={handleFieldChange}
                     type="text"
@@ -98,6 +96,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     value={newsArticle.synopsis}
                     id="synopsis"
                     />
+                <label htmlFor="synopsis">Article synopsis</label>
                 <div className="button__Space">
                     <button className="news_Button" type="button" onClick={props.handleDiscard} >
                          Discard &#x1F5D1;

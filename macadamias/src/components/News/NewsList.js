@@ -108,6 +108,7 @@ return(
                 toggleEdit={toggleEdit} 
                 articleToEdit={articleToEdit}
                 formType={formType}
+                getRelationalNews={getRelationalNews}
                 />
          } 
       </div>

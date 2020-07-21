@@ -60,6 +60,13 @@
     font-size: .8em;
     margin: 1em 0 .5em 1em ;
 }
+.news_Button:disabled {
+    background-color: lightgrey;
+    border: 1px solid black;
+    color: black;
+    font-size: .8em;
+    margin: 1em 0 .5em 1em ;
+}
 
 .news_Card {
     margin: 1em;
