@@ -32,7 +32,7 @@ const EventList = (props) => {
 
         APIManager.getUserInfoByEmail(currentUser.email)
         .then((activeUserObj) => {
-            setActiveUserId(activeUserObj[0].id)
+            setActiveUserId(activeUserObj.id)
         APIManager.getFriends(activeUserId)
         .then(myFriends => {
             let tempFriendsArray = myFriends.map(friend => { return friend.userId});

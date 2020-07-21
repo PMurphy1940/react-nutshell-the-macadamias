@@ -8,7 +8,7 @@ import ApplicationViews from './components/Views/ApplicationViews';
 import Login from "./components/Login/Login";
 
 
-function App() {
+function App(props) {
 
   // Generate unique keys for static elements
   const generateKey = (pre) => {
@@ -24,7 +24,7 @@ function App() {
           <Header />
         </div>
         <div className="div__main" key={generateKey("divMain")}>
-           <NavBar />
+           <NavBar {...props}/>
  <div className="div__appviews scrollDiv" key={generateKey("divAppViews")}>
           <ApplicationViews />
 </div>

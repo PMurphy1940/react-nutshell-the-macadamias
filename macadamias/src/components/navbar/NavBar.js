@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-const NavBar = () => {
- 
-
+const NavBar = (props) => {
+    const checkLogin = () =>{
+        return window.sessionStorage.credentials ? true : false
+    }
+    const [log, setLog] =useState(false)
+    useEffect(()=>{
+        if(checkLogin()){
+            setLog(true)
+        }else{
+            setLog(false)
+        }
+    }, [log])
+    const onClick = () =>{ 
+        window.sessionStorage.clear();
+        props.history.push('/login')
+       
+    }
     return (
         <>
             <div className="bg-light border-right col-2 text-center navbar-expand-sm" id="sidebar-wrapper">
@@ -18,7 +32,8 @@ const NavBar = () => {
                     <Link to="/articles" className="list-group-item list-group-item-action bg-light">Articles</Link>
                     <Link to="/events" className="list-group-item list-group-item-action bg-light" >Events</Link>
                     <Link to="/tasks" className="list-group-item list-group-item-action bg-light">Tasks</Link>
-                    <Link to="/login" className="list-group-item list-group-item-action bg-light">Login</Link>
+                    {checkLogin() ?<button onClick={onClick} className="list-group-item list-group-item-action bg-light">logout</button> : <Link to="/login" className="list-group-item list-group-item-action bg-light">login</Link>}
+                    
                 </div>
                 <hr />
                 <div className="div__messages__header">
@@ -33,4 +48,4 @@ const NavBar = () => {
         </>
     )
 }
-export default NavBar;
+export default withRouter(NavBar);
