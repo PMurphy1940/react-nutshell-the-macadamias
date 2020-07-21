@@ -7,7 +7,7 @@ const Authentication = (Component) =>{
     }
    return (props) =>{
        if(loggedIn()){
-           return 
+           return <Component {...props}/>
        }else{
            if(Component == "NavBar"){
            return <Component {...props}/>

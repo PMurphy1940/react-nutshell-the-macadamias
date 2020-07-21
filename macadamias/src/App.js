@@ -24,10 +24,14 @@ function App() {
           <Header />
         </div>
         <div className="div__main" key={generateKey("divMain")}>
-          {sessionStorage.credentials ? <NavBar /> : <NavBar/>}
+           <NavBar />
+ <div className="div__appviews scrollDiv" key={generateKey("divAppViews")}>
           <ApplicationViews />
+</div>
+         
 
         </div>
+       
         <footer key={generateKey("AppFooter")}>
           <div className="div__footer" key={generateKey("AppDivFooter")}>
             <Footer />
@@ -36,9 +40,16 @@ function App() {
       </div>
     </>
   );
+
+
+
+
+
 }
 
 
 export default App;
 
 
+//App.js
+//Layout: David Bruce

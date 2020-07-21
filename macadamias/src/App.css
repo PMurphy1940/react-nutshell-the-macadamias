@@ -12,7 +12,7 @@ html, body, #app, #app>div {
   max-height: 100vh;
   height: calc(100% - 60px);
   flex-direction: column; 
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -74,8 +74,6 @@ html, body, #app, #app>div {
   height: 90%;
   margin: 0 .04vw 0 0;
   padding: 0 2vw;
-  overflow: scroll;
-  /* width: auto; */
 }
 
 .div__footer {
@@ -87,10 +85,7 @@ right:0;
 }
 
 @media (min-width: 768px) {
-  .div__main {
-    flex-direction: row;
-    flex: 1;
-  }
+ 
   .div__appviews {
     overflow-x: hidden;
     overflow-y: auto;

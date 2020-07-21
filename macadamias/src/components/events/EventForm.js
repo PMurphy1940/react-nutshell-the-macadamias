@@ -1,3 +1,6 @@
+//EventForm.js - for adding new events
+//Author: David Bruce
+
 import React, { useState } from 'react';
 import APIManager from '../../modules/APIManager'
 import './EventForm.css';
@@ -33,6 +36,10 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
     setEvent(stateToChange);
 
   };
+
+  const cancelEvent = evt => {
+    props.history.push("/events")
+  }
 
   /*  Local method for validation, set loadingStatus, create event      object, invoke the eventManager post method, and redirect to the full event list
   */
@@ -77,12 +84,18 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
                 name="place" id="place" value={event.place}></input>
             <label htmlFor="place">Place</label>
           </div>
-          <div className="alignRight">
+          <div className="div__task__buttons">
             <button
               type="button"
+              className="btn"
               disabled={isLoading}
-              onClick={constructNewEvent}
-            >Submit</button>
+              onClick={constructNewEvent}>Save</button>
+              <button
+              type="button"
+              className="btn"
+              disabled={isLoading}
+              onClick={cancelEvent}
+            >Nevermind</button>
           </div>
         </fieldset>
       </form>

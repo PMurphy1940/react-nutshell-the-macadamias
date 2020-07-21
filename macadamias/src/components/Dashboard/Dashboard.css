@@ -1,0 +1,10 @@
+/* Dashboard home screen CSS 
+Author: David Bruce */
+
+.div__dashboard {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    background-image: url("../../images/loginbackground.jpg") ;
+    background-size: cover;
+}

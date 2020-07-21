@@ -1,0 +1,78 @@
+/* //Author => Patrick Murphy
+//This module supplies the CSS for specific NewsFeed items// */
+
+.news__Container {
+    background-color: whitesmoke;
+}
+
+.news__header h5 {
+    text-align: center;
+}
+.news__header {
+    margin-bottom: .5em;
+    border-bottom: 1px solid grey;
+    background-color: rgb(228, 225, 225);
+}
+
+.news__Articles {
+    max-height: 50%;
+    overflow: scroll;
+}
+
+.friend__User__News {
+    background-color: cornsilk;
+    font-style: italic;
+    font-size: 1em;
+}
+
+.news__Title {
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.user_News_Cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    height: 2em;
+    margin-top: -.6em;
+}
+
+.formgrid {
+    display: flex;
+    flex-direction: column;
+    background-color: lightcyan;
+    border-radius: 1%;
+    box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.2), 3px 6px 20px 0 rgba(0, 0, 0, 0.4);
+    font-size: .8em;
+    padding: 2em;
+    margin: 1em;
+}
+.button__Space {
+    display: flex;
+}
+.news_Button {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    font-size: .8em;
+    margin: 1em 0 .5em 1em ;
+}
+.news_Button:disabled {
+    background-color: lightgrey;
+    border: 1px solid black;
+    color: black;
+    font-size: .8em;
+    margin: 1em 0 .5em 1em ;
+}
+
+.news_Card {
+    margin: 1em;
+    font-size: .8em;
+}
+
+.tinyLink {
+    margin-top: .5em;
+}

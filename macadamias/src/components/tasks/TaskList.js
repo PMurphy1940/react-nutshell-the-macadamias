@@ -77,7 +77,7 @@ const TaskList = (props) => {
         // This is an edit, so we need the id
         const editedTask = {
             id: taskObject.id,
-            name: taskObject.task,
+            task: taskObject.task,
             date: taskObject.date,
             complete: true,
             userId: taskObject.userId
@@ -91,8 +91,17 @@ const TaskList = (props) => {
               console.log("After push")
           })
     
+
     };
 
+
+    const dateConverter= (suppliedDate) => {
+        let date = suppliedDate.toString()
+        date = date.slice(0,10)
+        date = date.split("-")
+        return date = `${date[1]}-${date[2]}-${date[0]}`
+      }
+    
 
     const deleteTask = id => {
         APIManager.deleteObject(id,"tasks")
@@ -111,7 +120,7 @@ const TaskList = (props) => {
                 
             </div>
             <div className="container__cards scrollDiv" key={generateKey("tasksContainerCards") } >
-                {tasks.map(task => <TaskCard key={task.id} task={task} checkClass={checkClass} setNext = {nextTask.id === task.id} activeUserId={activeUserId} deleteTask={deleteTask} updateTask={updateTask} {...props} />)}
+                {tasks.map(task => <TaskCard key={task.id} task={task} checkClass={checkClass} taskDate={dateConverter(task.date)} setNext = {nextTask.id === task.id} activeUserId={activeUserId} deleteTask={deleteTask} updateTask={updateTask} {...props} />)}
             </div>
         
         </div>
