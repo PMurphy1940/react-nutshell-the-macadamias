@@ -3,6 +3,7 @@ import MessageCard from './MessageCard';
 import messagesAPIcalls from './messagesAPIcalls';
 import MessageForm from './MessageForm';
 import MessageEditModal from './MessageEditModal';
+import MessageAddFriendModal from './MessageAddFriendModal';
 import './Messages.css'
 
 // Component is going to grab all messages in API cycle them through component to make them into message cards and display them. User should be able to post and edit own messages and add new friends.
@@ -15,12 +16,21 @@ const Messages = () => {
 
   // Initializing state to store message id to be edited
   const [messageIdEdit, setMessageIdEdit] = useState(null)
-  
-  // Initializing modal state
+
+  // Initializing state to store friend user id to be added
+  const [friendUserObj, setFriendUserObj] = useState({userId: "", username: ""})
+
+  // Initializing modal state for edit message
   const [modal, setModal] = useState(false);
 
-  // Method toggles modal state to true or open
+  // Initializing modal state for add new friend
+  const [modalFriend, setModalFriend] = useState(false)
+
+  // Method toggles modal state to true or open for edit message
   const toggle = () => setModal(!modal);
+
+  // Method toggles modal state to true or open for add new friend
+  const toggleFriendModal = () => setModalFriend(!modalFriend)
 
   let highestCard = ""
 
@@ -30,9 +40,15 @@ const Messages = () => {
     toggle()
   }
 
+  // Method grabs the friend user id to be added and sets the friend user id state
+  const addFriendObj = (friendObj) => {
+    setFriendUserObj({userId: friendObj.userId, username: friendObj.user.username})
+    toggleFriendModal()
+  }
+
   // Retrieving active user credentials from session storage, storing activeUserId in variable
   const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
-  const activeUserId = activeUser.activeUserId
+  const activeUserId = activeUser.id
 
   // Method invokes getAll() API method retrieving all messages and setting the messages state
   const getMessages = () => {
@@ -68,7 +84,8 @@ const Messages = () => {
       <div className="messages__container">
         <div className="messages__display">
           <MessageEditModal messageIdEdit={messageIdEdit} modal={modal} toggle={toggle} getMessages={getMessages} />
-          {messages.map(message => <MessageCard key={message.id} message={message} activeUserId={activeUserId} userFriends={userFriends} editMessageId={editMessageId} />)}
+          <MessageAddFriendModal friendUserObj={friendUserObj} modalFriend={modalFriend} toggleFriendModal={toggleFriendModal} activeUserId={activeUserId} getFriends={getFriends} />
+          {messages.map(message => <MessageCard key={message.id} message={message} activeUserId={activeUserId} userFriends={userFriends} editMessageId={editMessageId} addFriendObj={addFriendObj} />)}
         </div>
         <div className="messages__form">
           <MessageForm getMessages={getMessages} activeUserId={activeUserId} />

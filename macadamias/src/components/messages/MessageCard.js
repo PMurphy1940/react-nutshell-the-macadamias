@@ -1,7 +1,7 @@
 import React from 'react';
 import './MessageCard.css';
 
-const MessageCard = ({message, activeUserId, userFriends, editMessageId}) => {
+const MessageCard = ({message, activeUserId, userFriends, editMessageId, addFriendObj}) => {
   // Maps through each friends object in userFriends array and grabs the userId and stores the array of user's friends id in variable
   const userFriendsId = userFriends.map(friend => friend.userId)
 
@@ -12,7 +12,7 @@ const MessageCard = ({message, activeUserId, userFriends, editMessageId}) => {
       <div className="row no-gutters">
         <div className="imgButton__container">
           <img src={require("../../images/messages/profile_icon.png")} className="card-img" alt="Profile Icon" />
-          <button type="button" className="btn btn-success btn-sm" hidden={message.userId === activeUserId || userFriendsId.includes(message.userId) ? true : false}>Add</button>
+          <button type="button" className="btn btn-success btn-sm" hidden={message.userId === activeUserId || userFriendsId.includes(message.userId) ? true : false} onClick={() => addFriendObj(message)}>Add</button>
         </div>
         <div className="">
           <div className="card-body">

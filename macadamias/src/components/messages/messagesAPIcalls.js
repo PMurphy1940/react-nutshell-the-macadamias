@@ -42,5 +42,17 @@ export default {
     const response = await fetch(`${remoteURL}/friends?activeUserId=${activeUserId}`)
     const result = response.json()
     return result
+  },
+  // API method to post new friend object in database
+  async postNewFriend(newFriendObj) {
+    const response = await fetch(`${remoteURL}/friends`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newFriendObj)
+    })
+    const result = await response.json()
+    return result
   }
 }
