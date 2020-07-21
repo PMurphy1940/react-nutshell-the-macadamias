@@ -11,6 +11,10 @@ export default {
         return fetch(`${remoteURL}/news?${searchList}&_expand=user`)
         .then(response => response.json())
     },
+    getArticleToEdit(id) {
+        return fetch(`${remoteURL}/news/${id}`)
+        .then(response => response.json())
+    },
     postNewArticle(articleObject) {
         return fetch(`${remoteURL}/news/`, {
             method: "POST",
@@ -20,8 +24,8 @@ export default {
             body: JSON.stringify(articleObject)
         }).then(data => data.json())
     },
-    updateArticle(articleObject) {
-        return fetch(`${remoteURL}/news/`, {
+    updateArticle(id, articleObject) {
+        return fetch(`${remoteURL}/news/${id}`, {
             method: "PUT",
             headers: {
                 "Content-type": "application/json"

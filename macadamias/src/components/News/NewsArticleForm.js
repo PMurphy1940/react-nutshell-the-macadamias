@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+//Author => Patrick Murphy
+//This module supplies the input fields for the creation or editing of an Article//
+
+import React, { useState, useEffect} from 'react';
 import NewsAPIManager from "./NewsAPIManager";
 import RequiredModal from "../Modal"
 
@@ -6,18 +9,41 @@ import RequiredModal from "../Modal"
 
 
 const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
-    const [newsArticle, setNewsArticle] = useState({ userId: userId, url: url, title: title, synopsis: synopsis, date: ""})
+    const DEFAULT_STATE = { userId: "", url: "", title: "", synopsis: "", date: ""}
+    const [newsArticle, setNewsArticle] = useState(DEFAULT_STATE)
     const [isLoading, setIsLoading] = useState(true)
     const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
-
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+    
+   
     const handleFieldChange = event => {
         let target = event.target
         let {name, value} = target
         setNewsArticle({...newsArticle, [name]: value})
+        
     }
-    const [modal, setModal] = useState(false);
-    const toggle = () => setModal(!modal);
+    //Determine if the use of this page is for POSTing a new article, or PUTing an edited article//
+    useEffect(() => {
+        if (props.formType === "isEdit") {
+            NewsAPIManager.getArticleToEdit(props.articleToEdit.id)
+            .then(newsArticle => {
+                setNewsArticle({
+                    ...newsArticle
+                });
+                setIsLoading(false)
+            })
+        }}, [props.articleToEdit.id])
+    
+    const clearFieldsOnDiscard = () => {
+        
+        setNewsArticle("chicken feet")
+        console.log(newsArticle)
+        props.handleDiscard()
+    }
 
+
+    // Verify the voracity of the fields and if true, construct the Article object to send to the API//
     const makeNewArticle = event => {
         event.preventDefault();
         // setNewsArticle({...newsArticle, date: new Date(), userId: activeUser})
@@ -25,24 +51,35 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
             setModal(true);          
         }
         else{
-        let newsArticleObject = {
-            userId: activeUser,
-            url: newsArticle.url,
-            title: newsArticle.title,
-            synopsis: newsArticle.synopsis,
-            date: new Date()
+            setIsLoading(true)
+            let newsArticleObject = {
+                userId: activeUser,
+                url: newsArticle.url,
+                title: newsArticle.title,
+                synopsis: newsArticle.synopsis,
+                date: new Date()
+            } 
+            //Shut the edit window//      
+            props.toggleEdit()
+            console.log("Article", newsArticleObject)
+            //Logic for deciding POST or PUT//
+            if (props.formType === "isEdit") {
+                console.log("Edit Article", newsArticleObject)
+                NewsAPIManager.updateArticle(props.articleToEdit.id, newsArticleObject)
+                .then(() => props.history.push("/articles"));
+            }
+             
+            else if (props.formType === "isPost") {
+              NewsAPIManager.postNewArticle(newsArticleObject)
+                .then(() => props.history.push("/articles"));
+            }}            
         }
-        props.toggleEdit()
-        NewsAPIManager.postNewArticle( newsArticleObject)
-        .then(() => props.history.push("/articles"));
-        }
-    }
     return (
         <>
          <form>
              <fieldset>
                <div className="formgrid">
-                <label htmlFor="title">Article URL address</label>
+                <label htmlFor="url">Article URL address</label>
                 <input
                     onChange={handleFieldChange}
                     type="url"
@@ -56,6 +93,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     type="text"
                     name="title"
                     value={newsArticle.title}
+                    maxLength="47"
                     id="title"
                     />
                 <label htmlFor="synopsis">Article synopsis</label>
@@ -67,7 +105,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     id="synopsis"
                     />
                 <div className="button__Space">
-                    <button className="news_Button" type="button" onClick={props.handleDiscard} >
+                    <button className="news_Button" type="button" onClick={clearFieldsOnDiscard} >
                          Discard &#x1F5D1;
                     </button>
                     <button className="news_Button" type="button" onClick={makeNewArticle} >

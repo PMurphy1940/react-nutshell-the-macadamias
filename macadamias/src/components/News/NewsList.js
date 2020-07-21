@@ -17,16 +17,21 @@ const [friends, setFriends] = useState([])
 const [isEditing, setIsEditing] = useState(false)
 const [articleToEdit, setArticleToEdit] = useState([])
 const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
+const [formType, setFormType] = useState("isPost")
 const [deleteId, setdeleteId] = useState(0)
 const toggle = () => setConfirmDeleteModal(!confirmDeleteModal);
 const toggleEdit = () => setIsEditing(!isEditing)
 
 const editArticle = (id) => {
-    toggleEdit(true);
+    setIsEditing(true)
     let findArticleToEdit = news.find(newsArticle => {
        return (newsArticle.id === id)
     })
+    setFormType("isEdit")
+    
     setArticleToEdit(findArticleToEdit)
+    console.log(articleToEdit)
+    // console.log(formType)
     }
 
     
@@ -83,6 +88,7 @@ useEffect(() => {
 // }, [])
 
 const handleDiscard = () => {
+    setFormType("isPost")
     setIsEditing(false)
 }
 const confirmDelete = (id) => {
@@ -105,10 +111,15 @@ return(
         <h5>Great articles by great people with great internet research skills</h5>
         <button className="news_Button" type="button" hidden={isEditing} onClick={() => {setIsEditing(true)}}>Post new article  &#x270D;</button>
          { isEditing && 
-            <ArticleForm {...props} handleDiscard={handleDiscard} toggleEdit={toggleEdit} articleToEdit={articleToEdit}/>
-         }
-        </div>
-        <div className="news__Articles">
+            <ArticleForm {...props} 
+                handleDiscard={handleDiscard} 
+                toggleEdit={toggleEdit} 
+                articleToEdit={articleToEdit}
+                formType={formType}
+                />
+         } 
+      </div>
+      <div className="news__Articles">
         {(news !== undefined) && 
           <div>
             {news.map(newsItem =>
@@ -128,7 +139,7 @@ return(
                 handleDelete={handleDelete}
                 deleteId={deleteId}
                 modalType="Delete"/>
-    </div>
+      </div>
     </>
 )
 
