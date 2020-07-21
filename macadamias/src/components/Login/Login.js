@@ -34,13 +34,20 @@ const Login = (props) => {
     let target = e.target;
     let { name, value } = target;
     let current = await loginService.searchUser(value).catch(err => err);
+    console.log(current.length)
+    if(current.length === 0 ){
+     return
+    }
     console.log(current, "CURRENT");
     setUserData((userData)=>{
       return {
         ...userData,
         user:{
           ...userData.user,
-          [name]:value
+          username:current[0].username ? current[0].username: undefined,
+          password:current[0].password ?current[0].password : undefined,
+          email: current[0].email ?current[0].email : undefined,
+          id:current[0].id ? current[0].id: undefined
         }
       }
 
