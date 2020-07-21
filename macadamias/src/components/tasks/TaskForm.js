@@ -36,10 +36,14 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
 
   /*  Local method for validation, set loadingStatus, create task      object, invoke the taskManager post method, and redirect to the full task list
   */
+  const cancelTask = evt => {
+    props.history.push("/tasks")
+  }
+
   const constructNewTask = evt => {
     // Prtask Default Activity (don't refresh)
     evt.preventDefault();
-    if (task.name === "" || task.date === "") {
+    if (task.task === "" || task.date === "") {
       window.alert("Please input a name, date, and place for your task");
     } else {
       setIsLoading(true);
@@ -73,12 +77,19 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUse
             <label htmlFor="date">Date</label>
             
           </div>
-          <div className="alignRight">
+          <div className="div__task__buttons">
             <button
               type="button"
+              className="btn"
               disabled={isLoading}
               onClick={constructNewTask}
-            >Submit</button>
+            >Save</button>
+            <button
+              type="button"
+              className="btn"
+              disabled={isLoading}
+              onClick={cancelTask}
+            >Nevermind</button>
           </div>
         </fieldset>
       </form>
