@@ -1,10 +1,14 @@
+/* EventForm CSS
+Author: David Bruce */
+
+
 fieldset {
     max-width: 40em;
     padding: 4px;
     margin: 2em auto;
     border: 0 none;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    border-radius: 5px;
+    border-radius: 10px;
     background: aliceblue;
 }
 
@@ -14,6 +18,8 @@ fieldset input, fieldset button, fieldset select{
     margin: .2em 0;
     outline: none;
     box-shadow: none;
+    border-radius: 10px;
+
 }
 
 fieldset button {
@@ -59,3 +65,31 @@ fieldset input, fieldset button, fieldset select {
 fieldset .alignRight {
     text-align: right;
 }
+
+ /* Darker background on mouse-over */
+ .btn:hover {
+    background-color: RoyalBlue;
+    font-size: .8em;
+    transition: all 0.8s
+  }
+
+  .btn:after {
+    content: "";
+    background: #6598c9;
+    background-color: rgb(107, 167, 195);
+    display: block;
+    position: absolute;
+    padding-top: 2%;
+    padding-right: 2%;
+    margin-right: -3px!important;
+    margin-top: -2%;
+    opacity: 0;
+    transition: all 0.8s
+  }
+  
+  .btn:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }

@@ -74,8 +74,6 @@ html, body, #app, #app>div {
   height: 90%;
   margin: 0 .04vw 0 0;
   padding: 0 2vw;
-  /* overflow: scroll; */
-  /* width: auto; */
 }
 
 .div__footer {
