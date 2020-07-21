@@ -3,21 +3,21 @@ import "./navbar.css";
 import { Link, withRouter } from "react-router-dom";
 
 const NavBar = (props) => {
-    const checkLogin = () =>{
+    const checkLogin = () => {
         return window.sessionStorage.credentials ? true : false
     }
-    const [log, setLog] =useState(false)
-    useEffect(()=>{
-        if(checkLogin()){
+    const [log, setLog] = useState(false)
+    useEffect(() => {
+        if (checkLogin()) {
             setLog(true)
-        }else{
+        } else {
             setLog(false)
         }
     }, [log])
-    const onClick = () =>{ 
+    const onClick = () => {
         window.sessionStorage.clear();
         props.history.push('/login')
-       
+
     }
     return (
         <>
@@ -32,14 +32,14 @@ const NavBar = (props) => {
                     <Link to="/articles" className="list-group-item list-group-item-action bg-light">Articles</Link>
                     <Link to="/events" className="list-group-item list-group-item-action bg-light" >Events</Link>
                     <Link to="/tasks" className="list-group-item list-group-item-action bg-light">Tasks</Link>
-                    {checkLogin() ?<button onClick={onClick} className="list-group-item list-group-item-action bg-light">logout</button> : <Link to="/login" className="list-group-item list-group-item-action bg-light">login</Link>}
-                    
-                </div>
-                <hr />
-                <div className="div__messages__header">
-
-                </div>
+                    {checkLogin() ? <button onClick={onClick} className="list-group-item list-group-item-action bg-light">logout</button> : <Link to="/login" className="list-group-item list-group-item-action bg-light">login</Link>}
+                    <Link to="/messages" className="list-group-item list-group-item-action bg-light">Messages</Link>
             </div>
+            <hr />
+            <div className="div__messages__header">
+
+            </div>
+        </div>
  
         </>
     )
