@@ -1,3 +1,6 @@
+//Author => Patrick Murphy,
+//This module supplies Modal windows for anyone that want to use them in React-Nutshell//
+
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -7,7 +10,7 @@ const RequiredModal = (props) => {
 let modalType
 
 if (props.modalType === "Required") {
-    //This one gives you a fields required window//
+    //This one gives you a fields required window => PM//
     modalType = (
     <div>
       <Modal isOpen={props.modal} >
@@ -23,7 +26,7 @@ if (props.modalType === "Required") {
     }
 
     else if (props.modalType === "Delete") {
-        //This one gives you a confirm delete window//
+        //This one gives you a confirm delete window => PM//
     modalType = (
     <div>
       <Modal isOpen={props.confirmDeleteModal} >
