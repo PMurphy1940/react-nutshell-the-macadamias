@@ -19,6 +19,7 @@ const NewsItemDisplay = (props) => {
             
             <div className="user_News_Cont">
                 <CardTitle>{props.newsItem.user.username}</CardTitle>
+                <p className="news__Title">{props.newsItem.title}</p>
                 <p>{shared.dateConverter(props.newsItem.date)}</p>
             </div>
             <div className="tinyLink" >
@@ -27,8 +28,8 @@ const NewsItemDisplay = (props) => {
                 className="TinyLink_Element"
                 cardSize="small"
                 showGraphic={true}
-                maxLine={2}
-                minLine={1}
+                maxLine={3}
+                minLine={2}
                 url={props.newsItem.url}
             />
             </div>

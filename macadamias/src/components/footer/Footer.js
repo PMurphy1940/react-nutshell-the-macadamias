@@ -1,3 +1,6 @@
+// Footer.js - renders footer 
+// Author: David Bruce
+
 import React from "react";
 import "./footer.css"
 
