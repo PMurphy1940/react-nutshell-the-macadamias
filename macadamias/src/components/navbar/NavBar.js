@@ -3,6 +3,7 @@ import "./navbar.css";
 import Authentication from "../Auth/Authentication";
 import { Link } from "react-router-dom";
 
+
 const NavBar = () => {
  
 
@@ -20,17 +21,14 @@ const NavBar = () => {
                     <Link to="/events" className="list-group-item list-group-item-action bg-light" >Events</Link>
                     <Link to="/tasks" className="list-group-item list-group-item-action bg-light">Tasks</Link>
                     <Link to="/login" className="list-group-item list-group-item-action bg-light">Login</Link>
+                    <Link to="/messages" className="list-group-item list-group-item-action bg-light">Messages</Link>
                 </div>
                 <hr />
                 <div className="div__messages__header">
-                    Messages
-                </div>
-                <hr />
-                <div className="div__messages__container container">
-                     MessageList Call Here
+
                 </div>
             </div>
-
+ 
         </>
     )
 }

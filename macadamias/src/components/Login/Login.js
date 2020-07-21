@@ -15,7 +15,7 @@ const Login = (props) =>{
     }
     const onSubmit = () =>{
         sessionStorage.setItem('credentials', JSON.stringify(form))
-        props.history.push('/navbar');
+        props.history.push('/');
     }
     //Registration by default
     //If username is in system, collapse the second password field and make 

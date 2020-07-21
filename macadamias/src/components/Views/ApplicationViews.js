@@ -8,6 +8,7 @@ import TaskList from "../../components/tasks/TaskList"
 import TaskForm from "../../components/tasks/TaskForm"
 import NewsFeed from "../News/NewsList"
 import EventForm from "../events/EventForm"
+import Messages from '../messages/Messages';
 
 
 const ApplicationViews = () =>{
@@ -25,7 +26,8 @@ const ApplicationViews = () =>{
             path="/articles"
             render={props => {
                 return <NewsFeed {...props} />
-                }} />           
+                }} />
+        <Route exact path="/messages" render={props => <Messages />} />
         </>
     )
 }
