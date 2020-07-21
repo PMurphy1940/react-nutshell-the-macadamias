@@ -7,20 +7,13 @@ import "./Tasks.css";
 
 const TaskCard = (props) => {
 
-  let setFriendClass = ""
   let displayClass = ""
 
   const setNextClass = (props.setNext) ? "section__nextTask" : ""
-  if (props.activeUserId !== props.task.userId) { 
-    setFriendClass = "section__friend"
-    displayClass = "hidden"
-  }
-
-  
-         
+ 
   return (
     <>
-    <section className={`section__card task--${props.task.id}  ${setFriendClass}`}>
+    <section className={`section__card task--${props.task.id} `}>
       <div className="div__card__task">
    
                 <div className={`header__card  ${setNextClass}`}> {props.task.task}

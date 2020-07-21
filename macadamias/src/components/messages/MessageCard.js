@@ -8,7 +8,7 @@ const MessageCard = ({message, activeUserId, userFriends, editMessageId}) => {
   // Add friend button includes hidden attribute that toggles to 'true' when user id in message matches the active user id in storage session OR when user id in message matches id found in user's friends id array. Add button is only visible to messages belonging to people who are not already friends of the active user.
   // Edit button includes hidden attribute that toggles to 'true' when user id in message DOES NOT match the active user id in session storage. Editing is only available to the active user, cannot edit other people's messages.
   return (
-    <div className="card mb-3" style={{ maxWidth: 500 }}>
+    <div className={`msg__card__${message.id} card mb-3`} style={{ maxWidth: 500 }}>
       <div className="row no-gutters">
         <div className="imgButton__container">
           <img src={require("../../images/messages/profile_icon.png")} className="card-img" alt="Profile Icon" />

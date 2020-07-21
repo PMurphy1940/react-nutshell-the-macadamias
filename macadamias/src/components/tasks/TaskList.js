@@ -116,7 +116,7 @@ const TaskList = (props) => {
         <>
         <div className="div__container__component" key={generateKey("tasksContainer") } >
             <div className="div__component__toolbar" id="div__component__toolbar" key={generateKey("tasksToolbar") }>
-               <h3 className="header__component__toolbar"> Task Center </h3><button className="btn" onClick={() => {props.history.push("/tasks/new")}}><i className="fa fa-plus"></i> Add Me A Task</button>
+               <h3 className="header__component__toolbar"> Task Center </h3><button className="btn" onClick={() => {props.history.push("/tasks/new")}}><i className="fa fa-plus"></i> Add a Task</button>
                 
             </div>
             <div className="container__cards scrollDiv" key={generateKey("tasksContainerCards") } >

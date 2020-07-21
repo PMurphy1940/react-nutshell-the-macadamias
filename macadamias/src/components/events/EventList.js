@@ -21,7 +21,6 @@ const EventList = (props) => {
         return thisKey;
     }
 
-    // const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
     const activeUserEmail = JSON.parse(sessionStorage.getItem("credentials")).username;
 
 
@@ -37,10 +36,8 @@ const EventList = (props) => {
         .then(myFriends => {
             let tempFriendsArray = myFriends.map(friend => { return friend.userId});
             if (!tempFriendsArray.indexOf(activeUserId)) { tempFriendsArray.push(activeUserId)}  //Add activeUser for event filter
-            console.log("Friends Array after map:", tempFriendsArray)
             
             tempFriendsArray.push(activeUserId)  //Add activeUser for event filter
-            console.log("Friends Array after push active:", tempFriendsArray)
             return tempFriendsArray
         }).then((friends) => {
             
@@ -52,13 +49,11 @@ const EventList = (props) => {
             //Get all events
             return APIManager.getAllforComponent("events")
                 .then(eventsFromAPI => {
-                    console.log("All events:",eventsFromAPI)
-
+                    
                     //Filter friends and active user events into temp array
                     eventArray = eventsFromAPI.filter(function(event) {
                         return friends.includes(event.userId);
                     });
-                      console.log("filtered events:",eventArray)
                     //sort by date for list
                     eventArray.sort((a, b) => {
                         if (a.date > b.date) return -1;

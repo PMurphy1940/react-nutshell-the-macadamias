@@ -8,13 +8,14 @@ const EventCard = (props) => {
   let setFriendClass = ""
   let displayClass = ""
 
-
+  //set class for Next Occurring Event and friends for CSS
   const setNextClass = (props.setNext) ? "section__nextEvent" : ""
   if (props.activeUserId !== props.event.userId) { 
     setFriendClass = "section__friend"
     displayClass = "hidden"
   }
-  console.log("Card Active User:",props.activeUserId)
+
+  //Give a readable date
   const dateConverter= (suppliedDate) => {
     let date = suppliedDate.toString()
     date = date.slice(0,10)
