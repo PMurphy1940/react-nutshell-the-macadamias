@@ -27,9 +27,11 @@ const EventList = (props) => {
     const getEventList = () => {
 
         //Get Friends first to identify all events for active user and friends
-        APIManager.getUserInfoByEmail(activeUserEmail)
+        let currentUser = JSON.parse(window.sessionStorage.credentials);
+
+        APIManager.getUserInfoByEmail(currentUser.email)
         .then((activeUserObj) => {
-            setActiveUserId(activeUserObj[0].id)
+            setActiveUserId(activeUserObj.id)
         APIManager.getFriends(activeUserId)
         .then(myFriends => {
             let tempFriendsArray = myFriends.map(friend => { return friend.userId});

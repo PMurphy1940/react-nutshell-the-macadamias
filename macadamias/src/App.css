@@ -85,10 +85,7 @@ right:0;
 }
 
 @media (min-width: 768px) {
-  .div__main {
-    flex-direction: row;
-    flex: 1;
-  }
+ 
   .div__appviews {
     overflow-x: hidden;
     overflow-y: auto;

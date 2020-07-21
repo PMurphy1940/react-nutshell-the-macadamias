@@ -66,7 +66,31 @@ export default {
         },
         body: JSON.stringify(editedObject)
       }).then(response => response.json())
+    },
+   async getFriends(id){
+     let result =  await fetch(`http://localhost:5002/friends?activeUserId=2&_expand=user`)
+      .then(res=>res.json())
+      .then(res=>res)
+      return result
+    },
+    async searchUsers(search){
+      let result = await fetch(`http://localhost:5002/users?username_like=${search}`)
+      .then(res=>res.json())
+      .then(res=>res)
+      return result
+    },
+   async deleteFriend(id){
+    let res = await fetch(`http://localhost:5002/friends/${id}`, {
+      method: "DELETE",
+      headers:{
+        'Content-Type':"application/json"
+      }
+    })
+    .then(res=>res.json())
+    .then(res=>res)
+    return res
     }
+    
    
 }
 

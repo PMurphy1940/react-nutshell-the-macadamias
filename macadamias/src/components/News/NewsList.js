@@ -6,6 +6,7 @@ import NewsAPIManager from "./NewsAPIManager"
 import NewsItemDisplay from "./NewsItemDisplay"
 import ArticleForm from "./NewsArticleForm"
 import RequiredModal from "../Modal"
+import Authentication from "../Auth/Authentication"
 
 
 
@@ -34,7 +35,7 @@ const NewsFeed = (props) => {
         }
 
         //Get the Active User ID number from session storage??
-    const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
+    const activeUser = JSON.parse(sessionStorage.credentials).id
 
         //Fetch the user ID numbers of all the Active User's Friends//
     const getFriends = () => {
@@ -140,4 +141,4 @@ return(
 
 
 }
-export default NewsFeed
+export default Authentication(NewsFeed)
