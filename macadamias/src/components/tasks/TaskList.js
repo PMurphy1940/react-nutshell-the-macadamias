@@ -6,6 +6,7 @@ import APIManager from '../../modules/APIManager'
 import TaskCard from "./TaskCard"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Authentication from "../Auth/Authentication";
+import NavBar from "../navbar/NavBar"
       
 const TaskList = (props) => {
     //Set initial state
@@ -120,6 +121,6 @@ const TaskList = (props) => {
     )
 }
 
-export default Authentication(TaskList);
+export default TaskList;
 
 

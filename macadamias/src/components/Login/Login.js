@@ -1,44 +1,68 @@
 import React, { useState } from 'react';
-import APIManager from "../../modules/APIManager";
+import loginService from './loginService.js';
+import "./login.css";
+//Login
+//Enter Username, search on input
+//update state with current user
+//check username and password against user in state
 
 
 
 const Login = (props) => {
   const [register, setRegister] = useState(true);
-
   const [form, setForm] = useState({
     username: "",
     password: "",
-    activeUserId: 1
+    email: "",
+    confirmpassword:"",
+  })
+  const [userData, setUserData] = useState({
+    user:{
+      username:"",
+      email:"",
+      password:"",
+      id:0
+    }
   })
   const handleChange = async (e) => {
     e.preventDefault()
     let target = e.target;
     let { name, value } = target;
-    let current = await APIManager.searchUsers(value).catch(err=>err)
-    console.log(current, "CURRENT")
-    setForm({ ...form, [name]: value })
-    if(current.length != 0){
-      checkValidity(current, value)
+    let current = await loginService.searchUser(value).catch(err=>err);
+    console.log(current, "CURRENT"); 
+    setForm({ ...form, [name]: value });
+    if(current == null){
+      setRegister(true);
     }
-    
   }
-  const checkValidity = (current, value) => {
+  const handleRegister= async (e) => {
     
-      if (current[0].username === value) {
-        setRegister(false);
-      } else {
-        console.log("Keep Typing")
-      
+    let target = e.target;
+    let { name, value } = target;
+    setForm({...form, [name]:value})
+    let current = await loginService.searchUser(value).catch(err=>err);
+    if(name === "email"){
+      setUserData({ user:current[0]})
     }
-
+    if(current != null){
+      setRegister(false);
+    }
+   
   }
-  const onSubmit = async (e) => {
-    e.preventDefault()
-    sessionStorage.setItem('credentials', JSON.stringify(form))
+  
 
-    console.log(window.userData)
-    props.history.push('/navbar');
+  
+  const onSubmit = (e) => {
+   if(userData.user.email == form.email && userData.user.password == form.password){
+    console.log("login successful")
+    window.sessionStorage.setItem("credentials", JSON.stringify(userData.user))
+    console.log(window.sessionStorage.credentials);
+   props.history.push('/')
+   }else if(userData.user.email === form.email || userData.user.password === form.password){
+    console.log("Incorrect password or username", userData.user.email, form.username, userData.user.password, form.password )
+   }else{
+     console.log("Password and Username Invalid")
+   }
   }
   //Registration by default
   //If username is in system, collapse the second password field and make 
@@ -47,16 +71,27 @@ const Login = (props) => {
 
   return (
     <>
-      {register ? <><form className="col-md-4 col-md-offset-4 center">
+      {register ? <><form className="col-md-4 col-md-offset-4 center login">
+      <div className="form-group">
+          <label htmlFor="inputEmail">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            value={form.username}
+            name="username"
+            placeholder="Username"
+            onChange={handleRegister}
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="inputEmail">Email</label>
           <input
             type="email"
             className="form-control"
-            value={form.userName}
-            name="username"
+            value={form.email}
+            name="email"
             placeholder="Email"
-            onChange={handleChange}
+            onChange={handleRegister}
           />
         </div>
         <div className="form-group">
@@ -67,7 +102,18 @@ const Login = (props) => {
             name="password"
             value={form.password}
             placeholder="Password"
-            onChange={handleChange}
+            onChange={handleRegister}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="inputPassword">Confirm Password</label>
+          <input
+            type="password"
+            className="form-control"
+            name="confirmpassword"
+            value={form.confirmpassword}
+            placeholder="Confirm Password"
+            onChange={handleRegister}
           />
         </div>
         <div className="form-group">
@@ -78,14 +124,14 @@ const Login = (props) => {
         <button type="button" onClick={onSubmit} className="btn btn-primary">
           Login/Register
   </button>
-      </form> </> : <form className="col-md-4 col-md-offset-4 center">
+      </form> </> : <form className="col-md-4 col-md-offset-4 center login">
           <div className="form-group">
             <label htmlFor="inputEmail">Email</label>
             <input
               type="email"
               className="form-control"
-              value={form.userName}
-              name="username"
+              value={form.email}
+              name="email"
               placeholder="Email"
               onChange={handleChange}
             />

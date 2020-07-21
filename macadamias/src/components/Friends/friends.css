@@ -1,0 +1,19 @@
+.friends {
+    margin-top: 1em;
+    border: 1px solid black;
+    box-shadow: 0px 0px 4px;
+    display: flex;
+    justify-content: center;
+}
+.img-friends {
+    margin-top: 1em;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    align-content: center;
+    background-color:black;
+}
+.flex-wrapper{
+    flex-direction: row;
+    flex-wrap: wrap;
+}

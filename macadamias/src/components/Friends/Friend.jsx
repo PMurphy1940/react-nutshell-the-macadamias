@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import call from "../../modules/APIManager";
 import FriendCard from "./FriendCard";
+import "./friends.css";
 
 export default class Friend extends Component {
     constructor() {
@@ -11,25 +12,35 @@ export default class Friend extends Component {
         }
     }
     componentDidMount(){
-        call.getFriends()
+       this.getFriendsArray()
+    }
+    deleteFriend = async (id) =>{
+        await call.deleteFriend(id).catch(err=>console.log(err)).then(()=>{
+            this.getFriendsArray();
+        })
+    }
+   async getFriendsArray(){
+       await call.getFriends()
         .then(res=>{
             console.log(res)
             this.setState(prevState=>{
                 return {
                     ...prevState, 
                     friends: res,
-                    friendCards: res.map(friend=><FriendCard friend={friend.user} key={friend.id}/>)
+                    friendCards: res.map(friend=><FriendCard friend={friend.user} id={friend.id} key={friend.id} deleteFriend={this.deleteFriend}/>)
                 }
             })
         })
+        .catch(err=>console.log(err))
     }
 
 
     render(){
         return (
             <>
-            <h1>Test</h1>
-           <div> {this.state.friendCards}</div>
+            <div className="flex-wrapper">
+        {this.state.friendCards}
+        </div>
             </>
         )
     }

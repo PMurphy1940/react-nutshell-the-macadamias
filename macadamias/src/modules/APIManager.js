@@ -69,6 +69,17 @@ export default {
       .then(res=>res.json())
       .then(res=>res)
       return result
+    },
+   async deleteFriend(id){
+    let res = await fetch(`http://localhost:5002/friends/${id}`, {
+      method: "DELETE",
+      headers:{
+        'Content-Type':"application/json"
+      }
+    })
+    .then(res=>res.json())
+    .then(res=>res)
+    return res
     }
     
    
