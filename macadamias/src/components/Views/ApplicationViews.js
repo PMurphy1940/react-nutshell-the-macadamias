@@ -5,7 +5,8 @@ import NavBar from "../navbar/NavBar";
 import Dashboard from "../Dashboard/Dashboard"
 import EventList from '../../components/events/EventList';
 import TaskList from "../../components/tasks/TaskList"
-import TaskForm from "../../components/tasks/TaskForm"
+import TaskForm from "../../components/tasks/TaskForm";
+import Friend from "../../components/Friends/Friend";
 import NewsFeed from "../News/NewsList"
 import EventForm from "../events/EventForm"
 import Messages from '../messages/Messages';
@@ -28,6 +29,7 @@ const ApplicationViews = () =>{
                 return <NewsFeed {...props} />
                 }} />
         <Route exact path="/messages" render={props => <Messages />} />
+        <Route exact path="/friends" component={Friend}/>
         </>
     )
 }

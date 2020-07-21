@@ -11,9 +11,9 @@ const Dashboard = () =>{
     return (
         <>
         <div className="div__dashboard">
-        
+            
         </div>
         </>
     )
 }
-export default Authentication(Dashboard)
+export default Authentication(Dashboard);

@@ -1,6 +1,8 @@
 /* Task form css
 Author: David Bruce */
 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+
 .div__form__task {
     display: flex;
     flex-flow: column nowrap;
@@ -111,7 +113,7 @@ fieldset .alignRight {
     position: absolute;
     padding-top: 2%;
     padding-right: 2%;
-    margin-right: -3px!important;
+    margin-right: -3px;
     margin-top: -2%;
     opacity: 0;
     transition: all 0.8s
