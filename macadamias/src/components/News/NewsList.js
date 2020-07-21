@@ -1,5 +1,5 @@
 //Author => Patrick Murphy
-//This module GETs the user and user friends news article the routes those returns to generate the NewsFeed view//
+//This module GETs the user and user friends news article then routes those returns to generate the NewsFeed view//
 
 import React, { useState, useEffect } from 'react';
 import NewsAPIManager from "./NewsAPIManager"
@@ -10,97 +10,89 @@ import RequiredModal from "../Modal"
 
 
 const NewsFeed = (props) => {
-    // let APISearchQuerry = ``
-    //Initial news state is empty//
-const [news, setNews] = useState([])
-const [friends, setFriends] = useState([])
-const [isEditing, setIsEditing] = useState(false)
-const [articleToEdit, setArticleToEdit] = useState([])
-const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
-const [formType, setFormType] = useState("isPost")
-const [deleteId, setdeleteId] = useState(0)
-const toggle = () => setConfirmDeleteModal(!confirmDeleteModal);
-const toggleEdit = () => setIsEditing(!isEditing)
 
-const editArticle = (id) => {
-    setIsEditing(true)
-    let findArticleToEdit = news.find(newsArticle => {
-       return (newsArticle.id === id)
-    })
-    setFormType("isEdit")
-    
-    setArticleToEdit(findArticleToEdit)
-    console.log(articleToEdit)
-    // console.log(formType)
+        //Initial news state is empty//
+    const [news, setNews] = useState([])
+    const [friends, setFriends] = useState([])
+    const [isEditing, setIsEditing] = useState(false)
+    const [articleToEdit, setArticleToEdit] = useState([])
+    const [confirmDeleteModal, setConfirmDeleteModal] = useState(false)
+    const [formType, setFormType] = useState("isPost")
+    const [deleteId, setdeleteId] = useState(0)
+    const toggle = () => setConfirmDeleteModal(!confirmDeleteModal);
+    const toggleEdit = () => setIsEditing(!isEditing)
+
+
+    const editArticle = (id) => {
+        setIsEditing(true)
+        let findArticleToEdit = news.find(newsArticle => {
+        return (newsArticle.id === id)
+        })
+        setFormType("isEdit")
+        
+        setArticleToEdit(findArticleToEdit)
+        }
+
+        //Get the Active User ID number from session storage??
+    const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
+
+        //Fetch the user ID numbers of all the Active User's Friends//
+    const getFriends = () => {
+        NewsAPIManager.getUserFriends(activeUser)
+        .then(friends => {
+            setFriends({
+                ...friends
+            })       
+            //Once the API call is returned, produce a querry string consisting of the friends Id's to send to the News API//
+            if (friends !== undefined) {
+                    newsSearchString(friends)
+            }
+        });
     }
 
-    
+        //Function that converts the friends Id's into a string to search for their news articles and then GET those articles//
+    const newsSearchString = (friends) => {
+        let APISearchQuerry = `userId=${activeUser}`
+        friends.forEach(friend => {
+        APISearchQuerry += `&userId=${friend.userId}`
 
-    
-        
+        })
+        getRelationalNews(APISearchQuerry)
+    }
 
-    //Get the Active User ID number from session storage??
-const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
-
-    //Fetch the user ID numbers of all the Active User's Friends//
-const getFriends = () => {
-     NewsAPIManager.getUserFriends(activeUser)
-    .then(friends => {
-        setFriends({
-            ...friends
-        })       
-        //Once the API call is returned, produce a querry string consisting of the friends Id's to send to the News API//
-        if (friends !== undefined) {
-                newsSearchString(friends)
-        }
-    });
-}
-
-    //Function the convert the friends Id's into a string to search for their news articles and then GET those articles//
-const newsSearchString = (friends) => {
-    let APISearchQuerry = `userId=${activeUser}`
-    friends.forEach(friend => {
-       APISearchQuerry += `&userId=${friend.userId}`
-
-    })
-    // console.log("API String", APISearchQuerry)
-    getRelationalNews(APISearchQuerry)
-}
-
-    //Finally GET the news articles//
-const getRelationalNews = (APISearchQuerry) => {
-    return NewsAPIManager.getUserAndFriendsNews(APISearchQuerry)
-    .then(newsFromAPI => {
-        //sort the news array to put in descending order starting with the newest article//
-        newsFromAPI.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
-        //Here comes the render//
-        setNews(newsFromAPI)
-    })
-}
+        //Finally GET the news articles//
+    const getRelationalNews = (APISearchQuerry) => {
+        return NewsAPIManager.getUserAndFriendsNews(APISearchQuerry)
+        .then(newsFromAPI => {
+            //sort the news array to put in descending order starting with the newest article//
+            newsFromAPI.sort((a, b) => {return new Date(b.date) - new Date(a.date)})
+            //Here comes the render//
+            setNews(newsFromAPI)
+        })
+    }
 
 
-useEffect(() => {
-    getFriends();
-}, [])
+    useEffect(() => {
+        getFriends();
+    }, [])
 
-// useEffect(() => {
-//     getRelationalNews();
-// }, [])
+    //A couple of functions to pass down to children//
+    const handleDiscard = () => {
+        setFormType("isPost")
+        setIsEditing(false)
+    }
 
-const handleDiscard = () => {
-    setFormType("isPost")
-    setIsEditing(false)
-}
-const confirmDelete = (id) => {
-    setdeleteId(id)
-    setConfirmDeleteModal(true)
-}
-
-const handleDelete = () => {
-    setConfirmDeleteModal(false)
-    NewsAPIManager.deleteArticle(deleteId)
-    .then(() => getRelationalNews())
-}
+        //Delete part 1 - brings up the confirm modal//
+    const confirmDelete = (id) => {
+        setdeleteId(id)
+        setConfirmDeleteModal(true)
+    }
+        //Delete part 2 - on 'Confirm' move forward and complete the delete operation//
+    const handleDelete = () => {
+        setConfirmDeleteModal(false)
+        NewsAPIManager.deleteArticle(deleteId)
+        .then(() => getRelationalNews())
+    }
 
 
 

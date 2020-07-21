@@ -1,4 +1,3 @@
-
 //This module has generic functions that can be shared between sections//
 
     //This will convert your "new Date()" time stamp to just show dd-mm-yyyy / Patrick Murphy

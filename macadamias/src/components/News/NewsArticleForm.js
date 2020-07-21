@@ -5,12 +5,8 @@ import React, { useState, useEffect} from 'react';
 import NewsAPIManager from "./NewsAPIManager";
 import RequiredModal from "../Modal"
 
-
-
-
 const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
-    const DEFAULT_STATE = { userId: "", url: "", title: "", synopsis: "", date: ""}
-    const [newsArticle, setNewsArticle] = useState(DEFAULT_STATE)
+    const [newsArticle, setNewsArticle] = useState({ userId: userId, url: url, title: title, synopsis: synopsis, date: ""})
     const [isLoading, setIsLoading] = useState(true)
     const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
     const [modal, setModal] = useState(false);
@@ -18,6 +14,9 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
     
    
     const handleFieldChange = event => {
+        //As long as you've typed something, arm the submit button//
+        setIsLoading(false)
+        //capture the values being entered//
         let target = event.target
         let {name, value} = target
         setNewsArticle({...newsArticle, [name]: value})
@@ -34,23 +33,17 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                 setIsLoading(false)
             })
         }}, [props.articleToEdit.id])
-    
-    const clearFieldsOnDiscard = () => {
-        
-        setNewsArticle("chicken feet")
-        console.log(newsArticle)
-        props.handleDiscard()
-    }
-
 
     // Verify the voracity of the fields and if true, construct the Article object to send to the API//
     const makeNewArticle = event => {
         event.preventDefault();
-        // setNewsArticle({...newsArticle, date: new Date(), userId: activeUser})
+
         if (newsArticle.url === "" || newsArticle.title === "" || newsArticle.synopsis === "") {
+            //call the required fields modal from Modal.js if any field is blank//
             setModal(true);          
         }
         else{
+            //construct the object to ship to JSON//
             setIsLoading(true)
             let newsArticleObject = {
                 userId: activeUser,
@@ -61,7 +54,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
             } 
             //Shut the edit window//      
             props.toggleEdit()
-            console.log("Article", newsArticleObject)
+
             //Logic for deciding POST or PUT//
             if (props.formType === "isEdit") {
                 console.log("Edit Article", newsArticleObject)
@@ -74,6 +67,7 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                 .then(() => props.history.push("/articles"));
             }}            
         }
+        
     return (
         <>
          <form>
@@ -105,10 +99,10 @@ const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
                     id="synopsis"
                     />
                 <div className="button__Space">
-                    <button className="news_Button" type="button" onClick={clearFieldsOnDiscard} >
+                    <button className="news_Button" type="button" onClick={props.handleDiscard} >
                          Discard &#x1F5D1;
                     </button>
-                    <button className="news_Button" type="button" onClick={makeNewArticle} >
+                    <button className="news_Button" disabled={isLoading} type="button" onClick={makeNewArticle} >
                          Submit &#x270D;
                     </button>
             </div>  

@@ -1,3 +1,6 @@
+//Author => Patrick Murphy
+//This module supplies all the API calls for the News Feed section of React Nutshell//
+
 const remoteURL = 'http://localhost:5002'
 
 export default {
