@@ -87,8 +87,8 @@ right:0;
 @media (min-width: 768px) {
  
   .div__appviews {
-    overflow-x: hidden;
-    overflow-y: auto;
+    /* overflow-x: hidden; */
+    /* overflow-y: auto; */
     height: 100%;
   }
 

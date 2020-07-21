@@ -8,7 +8,7 @@ import RequiredModal from "../Modal"
 const ArticleForm = (props, userId="", url="", title="", synopsis="" ) => {
     const [newsArticle, setNewsArticle] = useState({ userId: userId, url: url, title: title, synopsis: synopsis, date: ""})
     const [isLoading, setIsLoading] = useState(true)
-    const activeUser = JSON.parse(sessionStorage.credentials).activeUserId
+    const activeUser = JSON.parse(sessionStorage.credentials).id
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
     
