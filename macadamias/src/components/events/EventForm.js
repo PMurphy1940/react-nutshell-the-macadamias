@@ -10,7 +10,7 @@ import Authentication from "../Auth/Authentication";
 // Form function for adding events
 const EventForm = props => {
 //get active user id for event
-const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
+const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).id;
 
   //useState for event (local to EventForm) that will update the named fields of the object
   const [event, setEvent] = useState({ name: "", date: "" , place: "", userId: activeUserId});
