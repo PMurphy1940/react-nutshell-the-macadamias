@@ -37,6 +37,7 @@ const MessageEditModal = ({messageIdEdit, modal, toggle, getMessages}) => {
       .then(() => {
         toggle()
         getMessages()
+        
       })
   }
 

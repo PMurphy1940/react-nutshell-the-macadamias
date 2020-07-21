@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 
 
 /* Main Container for Events */
@@ -24,8 +24,6 @@
 .section__nextEvent {
     font-size: medium;
     font-weight: 100;
-    /* box-sizing: border-box;
-    box-shadow:0 2px 6px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19); */
     margin: px 2px 2px 2px;
     border-radius: 5px;   
     font-weight: 700;
@@ -70,9 +68,6 @@
     background-color:rgb(151, 218, 65);
     margin: 0;
     padding: 0 5px;
-    /* box-sizing: border-box;
-    box-shadow:0 2px 6px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);
-    border-radius: 10px; */
 }
 
 /* Class for formatting friend item cards */
@@ -120,7 +115,7 @@
     position: absolute;
     padding-top: 10%;
     padding-right: 10%;
-    margin-right: -20px!important;
+    margin-right: -20px;
     margin-top: -10%;
     opacity: 0;
     transition: all 0.8s
