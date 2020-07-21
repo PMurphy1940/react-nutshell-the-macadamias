@@ -37,11 +37,10 @@ const Login = (props) => {
     let target = e.target;
     let { name, value } = target;
     let current = await loginService.searchUser(value).catch(err => err);
-    console.log(current.length)
+   
     if(current.length === 0 ){
      return
     }
-    console.log(current, "CURRENT");
     setUserData((userData)=>{
       return {
         ...userData,
@@ -83,31 +82,22 @@ const Login = (props) => {
   }
   const onRegister = async (e) =>{
     let newUser = {...form.user};
-    console.log(newUser, form);
+    
     delete newUser.confirmpassword;
     newUser.date = new Date();
-    console.log(newUser)
+   
     let user = await loginService.addUser(newUser).then(res=>res).catch(err=>console.log(err))
-    console.log(user)
+
     window.sessionStorage.setItem("credentials", JSON.stringify(user))
     props.history.push('/')
   }
-  // const dateConverter= (suppliedDate) => {
-  //   let date = suppliedDate.toString()
-  //   date = date.slice(0,10)
-  //   date = date.split("-")
-  //   return date = `${date[1]}-${date[2]}-${date[0]}`
-  // }
-
-  // const displayDate = dateConverter(props.event.date)
+  
 
 
 
   const onSubmit = (e) => {
     if (userData.user.email == form.user.email && userData.user.password == form.user.password) {
-      console.log("login successful")
       window.sessionStorage.setItem("credentials", JSON.stringify(userData.user))
-      console.log(window.sessionStorage.credentials);
       props.history.push('/')
     } else if (userData.user.email === form.email || userData.user.password === form.password) {
       console.log("Incorrect password or username", userData.user.email, form.username, userData.user.password, form.password)

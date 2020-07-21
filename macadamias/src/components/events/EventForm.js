@@ -26,11 +26,11 @@ const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).id;
   const handleFieldChange = evt => {
     // stateToChange is previous keys/values in event with spread (...)
     const stateToChange = { ...event };
-    // console.log("stateToChange Prev Value:",stateToChange)
+   
     
     //stateToChange[key] set to value from input event
     stateToChange[evt.target.id] = evt.target.value;
-    // console.log("stateToChange key value=",stateToChange[evt.target.id], "id:",evt.target.id)
+   
 
     // sets new event object 
     setEvent(stateToChange);

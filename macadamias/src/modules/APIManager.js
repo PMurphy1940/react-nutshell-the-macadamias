@@ -43,7 +43,6 @@ export default {
     getFriendsForEvents(activeUserId) {
         return fetch(`${remoteURL}/friends?activeUserId=${activeUserId}&_expand=user`)
         .then((response) => {
-          console.log(response.ok)
             return response.json();
               })
   },
