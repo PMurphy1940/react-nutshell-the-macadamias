@@ -130,6 +130,6 @@ const TaskList = (props) => {
     )
 }
 
-export default TaskList;
+export default Authentication(TaskList);
 
 

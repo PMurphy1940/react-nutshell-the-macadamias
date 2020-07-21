@@ -6,6 +6,7 @@ import NewsAPIManager from "./NewsAPIManager"
 import NewsItemDisplay from "./NewsItemDisplay"
 import ArticleForm from "./NewsArticleForm"
 import RequiredModal from "../Modal"
+import Authentication from "../Auth/Authentication"
 
 
 
@@ -140,4 +141,4 @@ return(
 
 
 }
-export default NewsFeed
+export default Authentication(NewsFeed)

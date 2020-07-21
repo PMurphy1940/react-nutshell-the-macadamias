@@ -9,6 +9,7 @@ import TaskForm from "../../components/tasks/TaskForm";
 import Friend from "../../components/Friends/Friend";
 import NewsFeed from "../News/NewsList"
 import EventForm from "../events/EventForm"
+import Messages from '../messages/Messages';
 
 
 const ApplicationViews = () =>{
@@ -26,7 +27,9 @@ const ApplicationViews = () =>{
             path="/articles"
             render={props => {
                 return <NewsFeed {...props} />
-                }} />           
+                }} />
+        <Route exact path="/messages" render={props => <Messages />} />
+        <Route exact path="/friends" component={Friend}/>
         </>
     )
 }

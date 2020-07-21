@@ -37,14 +37,10 @@ const NavBar = (props) => {
                 </div>
                 <hr />
                 <div className="div__messages__header">
-                    Messages
-                </div>
-                <hr />
-                <div className="div__messages__container container">
-                     MessageList Call Here
+
                 </div>
             </div>
-
+ 
         </>
     )
 }

@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import call from "../../modules/APIManager";
 import FriendCard from "./FriendCard";
 import "./friends.css";
+import Authentication from "../Auth/Authentication";
 
-export default class Friend extends Component {
+class Friend extends Component {
     constructor() {
         super();
         this.state = {
@@ -45,3 +46,4 @@ export default class Friend extends Component {
         )
     }
 }
+export default Authentication(Friend);
