@@ -8,7 +8,6 @@ Author: David Bruce  */
     right:0;
     padding: 0 .3em;
     color:rgb(241, 241, 226);
-    /* background-image:url("../../images/cloudsheader.jpg"); */
     background: linear-gradient(to bottom, rgba(149, 126, 204, 0.12) 70%,rgb(21, 24, 54) 100%);  min-height: 8vh;
     background-color: midnightblue;
     flex-shrink: 1;

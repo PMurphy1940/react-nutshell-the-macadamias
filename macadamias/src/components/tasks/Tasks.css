@@ -126,7 +126,7 @@ Author: David Bruce */
     position: absolute;
     padding-top: 10%;
     padding-right: 10%;
-    margin-right: -20px!important;
+    margin-right: -20px;
     margin-top: -10%;
     opacity: 0;
     transition: all 0.8s

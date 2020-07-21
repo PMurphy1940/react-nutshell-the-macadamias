@@ -111,7 +111,7 @@ fieldset .alignRight {
     position: absolute;
     padding-top: 2%;
     padding-right: 2%;
-    margin-right: -3px!important;
+    margin-right: -3px;
     margin-top: -2%;
     opacity: 0;
     transition: all 0.8s
