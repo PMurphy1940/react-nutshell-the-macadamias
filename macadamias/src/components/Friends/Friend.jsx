@@ -21,7 +21,8 @@ class Friend extends Component {
         })
     }
    async getFriendsArray(){
-       await call.getFriends()
+    const id = JSON.parse(sessionStorage.credentials).id;
+       await call.getFriends(id)
         .then(res=>{
             console.log(res)
             this.setState(prevState=>{
