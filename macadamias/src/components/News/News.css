@@ -3,21 +3,24 @@
 
 .news__Container {
     background-color: whitesmoke;
+    max-height: inherit;
 }
 
 .news__header h5 {
     text-align: center;
+    color: ivory;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .news__header {
     margin-bottom: .5em;
     border-bottom: 1px solid grey;
     background-color: rgb(228, 225, 225);
+    background-image: url("../../images/loginbackground.jpg");
 }
 
 .news__Articles {
-    /* max-height: 50%; */
+    height: 72vh;
     overflow: scroll;
-    max-height: 100vh;
 }
 
 .friend__User__News {
@@ -34,11 +37,11 @@
 .user_News_Cont {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
     border-bottom: 1px solid grey;
     border-top: 1px solid grey;
     height: 2em;
     margin-top: -.6em;
+    padding-top: .15em;
 }
 
 .formgrid {
