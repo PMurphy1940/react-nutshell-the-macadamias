@@ -2,3 +2,7 @@
     border: solid 1px black;
     box-shadow: 0px 0px 4px;
 }
+.center {
+    margin: 5em 25em 25em 10em;
+    padding: 2em;
+ }

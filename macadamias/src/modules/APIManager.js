@@ -43,7 +43,6 @@ export default {
     getFriendsForEvents(activeUserId) {
         return fetch(`${remoteURL}/friends?activeUserId=${activeUserId}&_expand=user`)
         .then((response) => {
-          console.log(response.ok)
             return response.json();
               })
   },
@@ -69,7 +68,7 @@ export default {
       }).then(response => response.json())
     },
    async getFriends(id){
-     let result =  await fetch(`http://localhost:5002/friends?activeUserId=2&_expand=user`)
+     let result =  await fetch(`http://localhost:5002/friends?activeUserId=${id}&_expand=user`)
       .then(res=>res.json())
       .then(res=>res)
       return result

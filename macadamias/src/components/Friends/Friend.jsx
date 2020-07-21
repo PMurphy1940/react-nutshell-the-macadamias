@@ -21,9 +21,9 @@ class Friend extends Component {
         })
     }
    async getFriendsArray(){
-       await call.getFriends()
+    const id = JSON.parse(sessionStorage.credentials).id;
+       await call.getFriends(id)
         .then(res=>{
-            console.log(res)
             this.setState(prevState=>{
                 return {
                     ...prevState, 
@@ -39,7 +39,8 @@ class Friend extends Component {
     render(){
         return (
             <>
-            <div className="flex-wrapper">
+            
+            <div className="friends">
         {this.state.friendCards}
         </div>
             </>
