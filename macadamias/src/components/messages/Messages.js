@@ -9,7 +9,7 @@ import './Messages.css'
 const Messages = () => {
   // Initializing messages state
   const [messages, setMessages] = useState([])
-  
+
   // Initializing user's friends state
   const [userFriends, setUserFriends] = useState([])
 
@@ -21,6 +21,8 @@ const Messages = () => {
 
   // Method toggles modal state to true or open
   const toggle = () => setModal(!modal);
+
+  let highestCard = ""
 
   // Method grabs the id of the message to be edited and sets the message id state with it
   const editMessageId = (id) => {
@@ -36,7 +38,10 @@ const Messages = () => {
   const getMessages = () => {
     return messagesAPIcalls.getAll()
       .then(response => {
+        const highestCardObj = response.reduce((prev, current) => (+prev.id > +current.id) ? prev : current);
+        highestCard = `msg__card__${highestCardObj.id}`
         setMessages(response)
+        
       })
   }
 
@@ -51,7 +56,11 @@ const Messages = () => {
   // useEffect invokes getMessages() method
   useEffect(() => {
     getMessages()
+    .then(() => {    document.querySelector(`.${highestCard}`).scrollIntoView(true)
+    })
     getFriends()
+
+    // document.querySelector(highestCard).scrollIntoView(true);
   }, [])
 
   return (
