@@ -39,7 +39,8 @@ class Friend extends Component {
     render(){
         return (
             <>
-            <div className="flex-wrapper">
+            
+            <div className="friends">
         {this.state.friendCards}
         </div>
             </>

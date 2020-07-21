@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import loginService from './loginService.js';
 import "./login.css";
 //Login
@@ -18,6 +18,9 @@ const Login = (props) => {
       confirmpassword: ""
     }
   })
+  useEffect(()=>{
+
+}, [register])
   const [userData, setUserData] = useState({
     user: {
       username: "",
@@ -75,10 +78,7 @@ const Login = (props) => {
         }
       }
     })
-    let current = await loginService.searchUser(value).catch(err => err);
-    if (name === "email") {
-      setUserData({ user: current[0] })
-    }
+    
 
   }
   const onRegister = async (e) =>{
@@ -87,7 +87,10 @@ const Login = (props) => {
     delete newUser.confirmpassword;
     newUser.date = new Date();
     console.log(newUser)
-    await loginService.addUser(newUser).then(res=>console.log("Success")).catch(err=>console.log(err))
+    let user = await loginService.addUser(newUser).then(res=>res).catch(err=>console.log(err))
+    console.log(user)
+    window.sessionStorage.setItem("credentials", JSON.stringify(user))
+    props.history.push('/')
   }
   // const dateConverter= (suppliedDate) => {
   //   let date = suppliedDate.toString()
@@ -119,7 +122,7 @@ const Login = (props) => {
 
   return (
     <>
-      {register ? <><form className="col-md-4 col-md-offset-4 center login">
+      {register ? <><form className="center col-md-4 col-md-offset-4 center login">
         <div className="form-group">
           <label htmlFor="inputEmail">Username</label>
           <input
@@ -169,10 +172,10 @@ const Login = (props) => {
             <input type="checkbox" /> Remember me
     </label>
         </div>
-        <button type="submit" onClick={onRegister} className="btn btn-primary">
+        <button type="button" onClick={onRegister} className="btn btn-primary">
           Register
   </button>
-        <button type="button" onClick={setReg}>Login</button>
+        <button type="button" className="btn " onClick={setReg}>Login</button>
       </form> </> : <form className="col-md-4 col-md-offset-4 center login">
           <div className="form-group">
             <label htmlFor="inputEmail">Email</label>
@@ -201,10 +204,10 @@ const Login = (props) => {
               <input type="checkbox" /> Remember me
     </label>
           </div>
-          <button type="submit" onClick={onSubmit} className="btn btn-primary">
+          <button type="button" onClick={onSubmit} className="btn btn-primary">
             Sign in
   </button>
-          <button type="button" onClick={setReg}>Register</button>
+          <button type="button" className="btn "  onClick={setReg}>Register</button>
         </form>}
 
     </>
