@@ -31,7 +31,7 @@ const Messages = () => {
 
   // Method toggles modal state to true or open for add new friend
   const toggleFriendModal = () => setModalFriend(!modalFriend)
-  
+
   let highestCard = ""
 
   // Method grabs the id of the message to be edited and sets the message id state with it
@@ -48,7 +48,7 @@ const Messages = () => {
 
   // Retrieving active user credentials from session storage, storing activeUserId in variable
   const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
-  const activeUserId = activeUser.activeUserId
+  const activeUserId = activeUser.id
 
   // Method invokes getAll() API method retrieving all messages and setting the messages state
   const getMessages = () => {
