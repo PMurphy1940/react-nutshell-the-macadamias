@@ -46,6 +46,12 @@ export default {
             return response.json();
               })
   },
+  getUserInfoByEmail(userEmail) {
+    return fetch(`${remoteURL}/users?email=${userEmail}`)
+    .then((response) => {
+        return response.json();
+          })
+  },  
     getAllUsersFriendsAndComponentItems(componentTable) {
         return fetch(`${remoteURL}/users?_embed=${componentTable}&_embed=friends`)
         .then((response) => {

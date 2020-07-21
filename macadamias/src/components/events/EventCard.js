@@ -14,7 +14,7 @@ const EventCard = (props) => {
     setFriendClass = "section__friend"
     displayClass = "hidden"
   }
-  
+  console.log("Card Active User:",props.activeUserId)
   const dateConverter= (suppliedDate) => {
     let date = suppliedDate.toString()
     date = date.slice(0,10)

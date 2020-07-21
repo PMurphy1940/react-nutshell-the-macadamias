@@ -10,6 +10,7 @@ import Authentication from "../Auth/Authentication";
 const EventList = (props) => {
     //Set initial state
     const [ events, setUserEvents ] = useState([]);
+    const [ activeUserId, setActiveUserId ] = useState([])
     const [ nextEvent, setNextEvent ] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -20,16 +21,24 @@ const EventList = (props) => {
         return thisKey;
     }
 
-    const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
+    // const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
+    const activeUserEmail = JSON.parse(sessionStorage.getItem("credentials")).username;
+
 
     const getEventList = () => {
 
-        // setActiveUserId(JSON.parse(sessionStorage.getItem("credentials")).activeUserId)
         //Get Friends first to identify all events for active user and friends
+        APIManager.getUserInfoByEmail(activeUserEmail)
+        .then((activeUserObj) => {
+            setActiveUserId(activeUserObj[0].id)
         APIManager.getFriends(activeUserId)
-            .then(myFriends => {
-            let tempFriendsArray = myFriends.map(friend => { return friend.activeUserId});
+        .then(myFriends => {
+            let tempFriendsArray = myFriends.map(friend => { return friend.userId});
+            if (!tempFriendsArray.indexOf(activeUserId)) { tempFriendsArray.push(activeUserId)}  //Add activeUser for event filter
+            console.log("Friends Array after map:", tempFriendsArray)
+            
             tempFriendsArray.push(activeUserId)  //Add activeUser for event filter
+            console.log("Friends Array after push active:", tempFriendsArray)
             return tempFriendsArray
         }).then((friends) => {
             
@@ -41,10 +50,13 @@ const EventList = (props) => {
             //Get all events
             return APIManager.getAllforComponent("events")
                 .then(eventsFromAPI => {
+                    console.log("All events:",eventsFromAPI)
+
                     //Filter friends and active user events into temp array
                     eventArray = eventsFromAPI.filter(function(event) {
-                          return friends.indexOf(event.userId);
-                      });
+                        return friends.includes(event.userId);
+                    });
+                      console.log("filtered events:",eventArray)
                     //sort by date for list
                     eventArray.sort((a, b) => {
                         if (a.date > b.date) return -1;
@@ -65,7 +77,9 @@ const EventList = (props) => {
 
                
               });
-            })
+            }) //Friends
+
+        }) //User
         };
         
     
