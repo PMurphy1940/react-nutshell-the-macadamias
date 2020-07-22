@@ -22,7 +22,7 @@ const TaskList = (props) => {
         return thisKey;
     }
 
-    const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).activeUserId;
+    const activeUserId = JSON.parse(sessionStorage.getItem("credentials")).id;
 
     const getTaskList = () => {
 
