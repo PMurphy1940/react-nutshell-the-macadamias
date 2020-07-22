@@ -8,7 +8,6 @@ Git clone to a react-enabled directory, setup json-server on port 5002, and run 
 ## Usage
 Register a username and login and use the Navigation menu on the left for each section.
 
-
 ## License
 Open source project for Team Macadamia of Nashville Software School
 
