@@ -1,68 +1,133 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Group Project: Nutshell
 
-## Available Scripts
+React-Nutshell:
+The Purpose of this application is to demonstrate a basic understanding of React.js and conduction 
+basic CRUD operations.
 
-In the project directory, you can run:
+## Patrick Murphy
+- News services
+- News Models
+- Cross Application CSS
+- Modals
 
-### `yarn start`
+## David Bruce
+- Event Services
+- Events Mobels
+- Cross Application CSS
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## James Su
+- Message services
+- Message Models
+- Cross Application CSS
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Anthony Johnson
+- Login services
+- Routes/App Views
+- Authentication
+- Friends
 
-### `yarn test`
+## Setup: Follow these steps exactly
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. run ```npm install```
+1. run ```npm start```
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Instructions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Nutshell is a new product offering that you have been tasked with building. It's a dashboard for people to use to organize their daily tasks, events, news article, friends, and chat messages.
 
-### `yarn eject`
+You will be utilizing all of the skills and concepts that you've learned up to this point in the course.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Functions
+1. Databases
+1. Github
+1. Objects
+1. CSS/Flexbox
+1. Array methods
+1. Components
+1. Handling user events
+1. Implementing CRUD operations
+1. Relational data
+1. ERDs
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To start you off, here's an example of what the resources in your API should look like once it's populated with some data from your application.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Users
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```json
+{
+      "username": "dan",
+      "email": "test@test.com",
+      "password": "test",
+      "date": "2020-06-26T17:58:57.776Z",
+      "id": 1
+    }
+```
 
-## Learn More
+### Messages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```json
+ {
+      "userId": 1,
+      "message": "qwertt",
+      "date": "2020-06-26T17:58:57.776Z",
+      "id": 1
+    }
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### News
 
-### Code Splitting
+```json
+{
+      "userId": 1,
+      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
+      "title": "Wormholes Allow Information to Escape Black Holes",
+      "synopsis": "Check out this recent discovery about workholes",
+      "date": "2020-06-26T17:58:57.776Z",
+      "id": 1
+    }
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Friends
 
-### Analyzing the Bundle Size
+```json
+  {
+      "userId": 1,
+      "activeUserId": 2,
+      "date": "2020-06-26T17:58:57.776Z",
+      "id": 5
+    }
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Tasks
 
-### Making a Progressive Web App
+```json
+{
+      "userId": 3,
+      "task": "Take out garbage",
+      "complete": false,
+      "date": "2020-06-26T17:58:57.776Z",
+      "id": 1
+    }
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Professional Requirements
 
-### Advanced Configuration
+1. Each module should have a comment at the top with the following info: author(s) and purpose of module
+1. The README for your project should include instructions on how another person can download and run the application
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## How to Handle Authentication
 
-### Deployment
+Be very clear that what you will be implemeting is not real authentication. It is a simulation of it using very simplistic tools.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+You will be using session storage to keep track of which user has logged into Nutshell. When the user fills out the registration form, you will POST their email, username and password to the `users` collection in your API. You will then immediately take the `id` of the object in the response and save it to [session storage](https://javascript.info/localstorage#sessionstorage).
 
-### `yarn build` fails to minify
+```js
+sessionStorage.setItem("activeUser", user.id)
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If you want to add a Logout feature, all you need to do it remove the session storage item.
+
+```js
+sessionStorage.clear();
